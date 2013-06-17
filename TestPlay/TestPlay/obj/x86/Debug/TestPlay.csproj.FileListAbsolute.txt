@@ -7,3 +7,5 @@ c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x8
 c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\GenerateResource.write.1.tlog
 c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\TestPlay.exe
 c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\TestPlay.pdb
+C:\Users\mijbenne\Documents\GitHub\CITRIS_screen_selector\TestPlay\TestPlay\obj\x86\Debug\TestPlay.exe
+C:\Users\mijbenne\Documents\GitHub\CITRIS_screen_selector\TestPlay\TestPlay\obj\x86\Debug\TestPlay.pdb

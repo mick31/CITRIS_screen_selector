@@ -39,7 +39,7 @@
             // 
             this.TV2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV2.BackgroundImage")));
             this.TV2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.TV2.Location = new System.Drawing.Point(70, 63);
+            this.TV2.Location = new System.Drawing.Point(65, 74);
             this.TV2.Name = "TV2";
             this.TV2.Size = new System.Drawing.Size(285, 211);
             this.TV2.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.TV1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV1.BackgroundImage")));
             this.TV1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.TV1.Location = new System.Drawing.Point(372, 63);
+            this.TV1.Location = new System.Drawing.Point(367, 74);
             this.TV1.Name = "TV1";
             this.TV1.Size = new System.Drawing.Size(285, 211);
             this.TV1.TabIndex = 1;
@@ -59,7 +59,8 @@
             // 
             // Podium
             // 
-            this.Podium.Location = new System.Drawing.Point(704, 194);
+            this.Podium.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Podium.Location = new System.Drawing.Point(699, 205);
             this.Podium.Name = "Podium";
             this.Podium.Size = new System.Drawing.Size(123, 80);
             this.Podium.TabIndex = 2;
@@ -68,7 +69,8 @@
             // 
             // Polycom
             // 
-            this.Polycom.Location = new System.Drawing.Point(694, 63);
+            this.Polycom.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Polycom.Location = new System.Drawing.Point(689, 74);
             this.Polycom.Name = "Polycom";
             this.Polycom.Size = new System.Drawing.Size(143, 104);
             this.Polycom.TabIndex = 3;
@@ -105,6 +107,7 @@
         private System.Windows.Forms.Button TV1;
         private System.Windows.Forms.Button Podium;
         private System.Windows.Forms.Button Polycom;
+
     }
 }
 

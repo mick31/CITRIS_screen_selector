@@ -16,6 +16,26 @@ namespace TestPlay
             InitializeComponent();
         }
 
+        private void Handle_Click(object sender, EventArgs e)
+        {
+            Button target = (Button)sender;
+            Control container = target.Parent;
+
+            // If the container is output
+            if (container.Name == "outputGroup")
+            {
+                // Do output stuff
+                inputs.Visible = true;
+            }
+            // else if is input
+            else
+            {
+                // Do input stuff
+                // Such as send command to shinybow and hide thyself
+                inputs.Visible = false;
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 

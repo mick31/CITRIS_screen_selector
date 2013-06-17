@@ -1,0 +1,9 @@
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\bin\Debug\TestPlay.exe
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\bin\Debug\TestPlay.pdb
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\TestPlay.Form1.resources
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\TestPlay.Properties.Resources.resources
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\TestPlay.exe
+c:\users\mijbenne\documents\visual studio 2010\Projects\TestPlay\TestPlay\obj\x86\Debug\TestPlay.pdb

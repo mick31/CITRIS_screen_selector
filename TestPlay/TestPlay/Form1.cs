@@ -24,33 +24,46 @@ namespace TestPlay
             Button target = (Button)sender;
             Control container = target.Parent;
 
-            // If the container is output
-            if (container.Name == "outputGroup")
+            if ((int)target.Tag == -1) // Power off
             {
-                // Do output stuff
-                inputGroup.Visible = true;
-                currentOutput = (int)target.Tag;
-            }
-            // else if is input, Do input stuff
-            else
-            {
-                // Get the index of the button pressed
-                currentInput = (int)target.Tag;
-
-                // Send the signal to the ShinyBow
-                // TODO: That ^^
-                System.Console.WriteLine("Testing! Output {0}, Input {1}", currentOutput, currentInput);
-
                 serialPort1.WriteTimeout = 500;
                 serialPort1.Open();
-                String cmd = String.Format("SBI0{0}O0{1}", currentInput, currentOutput);
+                String cmd = String.Format("Outputall 00;");
                 serialPort1.WriteLine(cmd.Trim());
+                serialPort1.DiscardOutBuffer();
                 serialPort1.Close();
+            }
+            else
+            {
+                // If the container is output
+                if (container.Name == "outputGroup")
+                {
+                    // Do output stuff
+                    inputGroup.Visible = true;
+                    currentOutput = (int)target.Tag;
+                }
+                // else if is input, Do input stuff
+                else
+                {
+                    // Get the index of the button pressed
+                    currentInput = (int)target.Tag;
 
-                // If confirmed, update the picture of the output button
+                    // Send the signal to the ShinyBow
+                    // TODO: That ^^
+                    System.Console.WriteLine("Testing! Output {0}, Input {1}", currentOutput, currentInput);
 
-                // hide the input buttons
-                inputGroup.Visible = false;
+                    serialPort1.WriteTimeout = 500;
+                    serialPort1.Open();
+                    String cmd = String.Format("Output0{1} 0{0};", currentInput, currentOutput);
+                    serialPort1.WriteLine(cmd.Trim());
+                    serialPort1.DiscardOutBuffer();
+                    serialPort1.Close();
+
+                    // If confirmed, update the picture of the output button
+
+                    // hide the input buttons
+                    inputGroup.Visible = false;
+                }
             }
         }
 

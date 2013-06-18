@@ -1,6 +1,6 @@
 ﻿namespace TestPlay
 {
-    partial class Form1
+    partial class ScreenSelector
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenSelector));
             this.TV2 = new System.Windows.Forms.Button();
             this.TV1 = new System.Windows.Forms.Button();
             this.Podium = new System.Windows.Forms.Button();
@@ -39,9 +39,9 @@
             this.docCam = new System.Windows.Forms.Button();
             this.polycomOut = new System.Windows.Forms.Button();
             this.laptop = new System.Windows.Forms.Button();
-            this.inputs = new System.Windows.Forms.Panel();
+            this.inputGroup = new System.Windows.Forms.Panel();
             this.outputGroup.SuspendLayout();
-            this.inputs.SuspendLayout();
+            this.inputGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // TV2
@@ -151,18 +151,18 @@
             this.laptop.UseVisualStyleBackColor = true;
             this.laptop.Click += new System.EventHandler(this.Handle_Click);
             // 
-            // inputs
+            // inputGroup
             // 
-            this.inputs.Controls.Add(this.laptop);
-            this.inputs.Controls.Add(this.polycomOut);
-            this.inputs.Controls.Add(this.docCam);
-            this.inputs.Controls.Add(this.resPC2);
-            this.inputs.Controls.Add(this.resPC1);
-            this.inputs.Location = new System.Drawing.Point(132, 341);
-            this.inputs.Name = "inputs";
-            this.inputs.Size = new System.Drawing.Size(446, 64);
-            this.inputs.TabIndex = 11;
-            this.inputs.Visible = false;
+            this.inputGroup.Controls.Add(this.laptop);
+            this.inputGroup.Controls.Add(this.polycomOut);
+            this.inputGroup.Controls.Add(this.docCam);
+            this.inputGroup.Controls.Add(this.resPC2);
+            this.inputGroup.Controls.Add(this.resPC1);
+            this.inputGroup.Location = new System.Drawing.Point(132, 341);
+            this.inputGroup.Name = "inputs";
+            this.inputGroup.Size = new System.Drawing.Size(446, 64);
+            this.inputGroup.TabIndex = 11;
+            this.inputGroup.Visible = false;
             // 
             // Form1
             // 
@@ -171,18 +171,18 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(946, 646);
-            this.Controls.Add(this.inputs);
+            this.Controls.Add(this.inputGroup);
             this.Controls.Add(this.outputGroup);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "ScreenSelector";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "I/O Select";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.outputGroup.ResumeLayout(false);
-            this.inputs.ResumeLayout(false);
+            this.inputGroup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,7 +199,7 @@
         private System.Windows.Forms.Button docCam;
         private System.Windows.Forms.Button polycomOut;
         private System.Windows.Forms.Button laptop;
-        private System.Windows.Forms.Panel inputs;
+        private System.Windows.Forms.Panel inputGroup;
 
     }
 }

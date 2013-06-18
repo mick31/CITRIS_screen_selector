@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenSelector));
+            this.serialPort1 = new System.IO.Ports.SerialPort();
             this.TV2 = new System.Windows.Forms.Button();
             this.TV1 = new System.Windows.Forms.Button();
             this.Podium = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             this.TV2.Name = "TV2";
             this.TV2.Size = new System.Drawing.Size(285, 211);
             this.TV2.TabIndex = 0;
+            this.TV2.Tag = 2;
             this.TV2.Text = "TV 2";
             this.TV2.UseVisualStyleBackColor = true;
             this.TV2.Click += new System.EventHandler(this.Handle_Click);
@@ -64,6 +66,7 @@
             this.TV1.Name = "TV1";
             this.TV1.Size = new System.Drawing.Size(285, 211);
             this.TV1.TabIndex = 1;
+            this.TV1.Tag = 1;
             this.TV1.Text = "TV 1";
             this.TV1.UseVisualStyleBackColor = true;
             this.TV1.Click += new System.EventHandler(this.Handle_Click);
@@ -75,6 +78,7 @@
             this.Podium.Name = "Podium";
             this.Podium.Size = new System.Drawing.Size(123, 80);
             this.Podium.TabIndex = 2;
+            this.Podium.Tag = 3;
             this.Podium.Text = "Podium";
             this.Podium.UseVisualStyleBackColor = true;
             this.Podium.Click += new System.EventHandler(this.Handle_Click);
@@ -86,6 +90,7 @@
             this.presentation.Name = "presentation";
             this.presentation.Size = new System.Drawing.Size(143, 104);
             this.presentation.TabIndex = 3;
+            this.presentation.Tag = 4;
             this.presentation.Text = "Polycom Presentation";
             this.presentation.UseVisualStyleBackColor = true;
             this.presentation.Click += new System.EventHandler(this.Handle_Click);
@@ -107,6 +112,7 @@
             this.resPC1.Name = "resPC1";
             this.resPC1.Size = new System.Drawing.Size(75, 29);
             this.resPC1.TabIndex = 5;
+            this.resPC1.Tag = 1;
             this.resPC1.Text = "Res PC 1";
             this.resPC1.UseVisualStyleBackColor = true;
             this.resPC1.Click += new System.EventHandler(this.Handle_Click);
@@ -117,6 +123,7 @@
             this.resPC2.Name = "resPC2";
             this.resPC2.Size = new System.Drawing.Size(75, 29);
             this.resPC2.TabIndex = 6;
+            this.resPC2.Tag = 2;
             this.resPC2.Text = "Res PC 2";
             this.resPC2.UseVisualStyleBackColor = true;
             this.resPC2.Click += new System.EventHandler(this.Handle_Click);
@@ -127,6 +134,7 @@
             this.docCam.Name = "docCam";
             this.docCam.Size = new System.Drawing.Size(75, 29);
             this.docCam.TabIndex = 7;
+            this.docCam.Tag = 3;
             this.docCam.Text = "Doc Cam";
             this.docCam.UseVisualStyleBackColor = true;
             this.docCam.Click += new System.EventHandler(this.Handle_Click);
@@ -137,6 +145,7 @@
             this.polycomOut.Name = "polycomOut";
             this.polycomOut.Size = new System.Drawing.Size(75, 29);
             this.polycomOut.TabIndex = 8;
+            this.polycomOut.Tag = 4;
             this.polycomOut.Text = "Polycom";
             this.polycomOut.UseVisualStyleBackColor = true;
             this.polycomOut.Click += new System.EventHandler(this.Handle_Click);
@@ -147,6 +156,7 @@
             this.laptop.Name = "laptop";
             this.laptop.Size = new System.Drawing.Size(75, 29);
             this.laptop.TabIndex = 10;
+            this.laptop.Tag = 5;
             this.laptop.Text = "Laptop";
             this.laptop.UseVisualStyleBackColor = true;
             this.laptop.Click += new System.EventHandler(this.Handle_Click);
@@ -159,12 +169,12 @@
             this.inputGroup.Controls.Add(this.resPC2);
             this.inputGroup.Controls.Add(this.resPC1);
             this.inputGroup.Location = new System.Drawing.Point(132, 341);
-            this.inputGroup.Name = "inputs";
+            this.inputGroup.Name = "inputGroup";
             this.inputGroup.Size = new System.Drawing.Size(446, 64);
             this.inputGroup.TabIndex = 11;
             this.inputGroup.Visible = false;
             // 
-            // Form1
+            // ScreenSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,6 +210,8 @@
         private System.Windows.Forms.Button polycomOut;
         private System.Windows.Forms.Button laptop;
         private System.Windows.Forms.Panel inputGroup;
+
+        private System.IO.Ports.SerialPort serialPort1;
 
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace TestPlay
+namespace ScreenSelector
 {
     static class Program
     {

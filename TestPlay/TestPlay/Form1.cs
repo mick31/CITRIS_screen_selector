@@ -7,74 +7,144 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestPlay
+namespace ScreenSelector
 {
+   
+
     public partial class ScreenSelector : Form
     {
         int currentOutput;
-        int currentInput;
+
+        int outputTag;
+        int inputTag;
+
+        List<Button> inputs;
+        List<Button> outputs;
+        List<Button> others;
 
         public ScreenSelector()
         {
+            currentOutput = 0;
+
+            outputTag = 1;
+            inputTag = 1;
+
+            inputs = new List<Button>();
+            outputs = new List<Button>();
+            others = new List<Button>();
+
             InitializeComponent();
+
+            InitializeButton(TV2, ButtonType.OUTPUT);
+            InitializeButton(TV1, ButtonType.OUTPUT);
+            InitializeButton(Podium, ButtonType.OUTPUT);
+            InitializeButton(presentation, ButtonType.OUTPUT);
+            InitializeButton(recording, ButtonType.OUTPUT);
+
+            InitializeButton(resPC1, ButtonType.INPUT);
+            InitializeButton(resPC2, ButtonType.INPUT);
+            InitializeButton(docCam, ButtonType.INPUT);
+            InitializeButton(laptop, ButtonType.INPUT);
+            InitializeButton(polycomOut, ButtonType.INPUT);
+
+            InitializeButton(offOutputs, ButtonType.OTHER);
+            offOutputs.Click += new EventHandler(offOutputs_Click);
         }
 
-        private void Handle_Click(object sender, EventArgs e)
+        private void InitializeButton(Button button, ButtonType type)
         {
+            ButtonTag tag;
+            
+            switch (type)
+            {
+                case ButtonType.OUTPUT:
+                    tag = new ButtonTag(type, outputTag++);
+                    button.Click += new EventHandler(Handle_Button);
+                    button.Tag = tag;
+                    outputs.Add(button);
+                    break;
+                case ButtonType.INPUT:
+                    tag = new ButtonTag(type, inputTag++);
+                    button.Click += new EventHandler(Handle_Button);
+                    button.Tag = tag;
+                    button.Visible = false;
+                    inputs.Add(button);
+                    break;
+                case ButtonType.OTHER:
+                    tag = new ButtonTag(type, -1);
+                    button.Tag = tag;
+                    others.Add(button);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Handle_Button(object sender, EventArgs e)
+        {
+            if (!(sender is Button))
+                // Do something fancier here
+                return;
+
             Button target = (Button)sender;
-            Control container = target.Parent;
 
-            if ((int)target.Tag == -1) // Power off
+            if (!(target.Tag is ButtonTag))
+                return;
+
+            ButtonTag tag = (ButtonTag)target.Tag;
+
+            if (tag.GetButtonType == ButtonType.INPUT)
             {
-                serialPort1.WriteTimeout = 500;
-                serialPort1.Open();
-                String cmd = String.Format("Outputall 00;");
-                serialPort1.WriteLine(cmd.Trim());
-                serialPort1.DiscardOutBuffer();
-                serialPort1.Close();
-            }
-            else
-            {
-                // If the container is output
-                if (container.Name == "outputGroup")
+                // Send input switch command to SB
+                SendCommand(String.Format("Output0{1} 0{0};", tag.GetIndex, currentOutput).Trim());
+
+                // Hide the inputs
+                foreach (Button b in inputs)
                 {
-                    // Do output stuff
-                    inputGroup.Visible = true;
-                    currentOutput = (int)target.Tag;
+                    b.Visible = false;
                 }
-                // else if is input, Do input stuff
-                else
+            }
+            else if (tag.GetButtonType == ButtonType.OUTPUT)
+            {
+                currentOutput = tag.GetIndex;
+
+                // Show the inputs
+                foreach (Button b in inputs)
                 {
-                    // Get the index of the button pressed
-                    currentInput = (int)target.Tag;
-
-                    // Send the signal to the ShinyBow
-                    // TODO: That ^^
-                    System.Console.WriteLine("Testing! Output {0}, Input {1}", currentOutput, currentInput);
-
-                    serialPort1.WriteTimeout = 500;
-                    serialPort1.Open();
-                    String cmd = String.Format("Output0{1} 0{0};", currentInput, currentOutput);
-                    serialPort1.WriteLine(cmd.Trim());
-                    serialPort1.DiscardOutBuffer();
-                    serialPort1.Close();
-
-                    // If confirmed, update the picture of the output button
-
-                    // hide the input buttons
-                    inputGroup.Visible = false;
+                    b.Visible = true;
                 }
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void offOutputs_Click(object sender, EventArgs e)
         {
-
+            SendCommand(String.Format("Outputall 00;").Trim());
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void SendCommand(string p)
         {
+            serialPort1.WriteTimeout = 500;
+            serialPort1.Open();
+            serialPort1.WriteLine(p);
+            serialPort1.DiscardOutBuffer();
+            serialPort1.Close();
+        }
+    }
 
+    public enum ButtonType { INPUT, OUTPUT, OTHER }
+
+    public class ButtonTag
+    {
+        private ButtonType _type;
+        private int _index;
+
+        public ButtonType GetButtonType { get { return _type; } }
+        public int GetIndex { get { return _index; } }
+
+        public ButtonTag(ButtonType type, int index)
+        {
+            _type = type;
+            _index = index;
         }
     }
 }

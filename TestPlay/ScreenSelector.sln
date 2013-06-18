@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlay", "TestPlay\TestPlay.csproj", "{8EA2EC7A-E12F-455B-9916-1C8DDC08EA20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSelector", "TestPlay\ScreenSelector.csproj", "{8EA2EC7A-E12F-455B-9916-1C8DDC08EA20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

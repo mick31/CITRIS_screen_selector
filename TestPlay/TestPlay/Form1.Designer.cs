@@ -44,6 +44,14 @@
             this.offOutputs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DiscardNull = true;
+            this.serialPort1.PortName = "COM3";
+            this.serialPort1.ReadTimeout = 128;
+            this.serialPort1.ReceivedBytesThreshold = 16;
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.Handle_Response);
+            // 
             // TV2
             // 
             this.TV2.BackColor = System.Drawing.Color.White;

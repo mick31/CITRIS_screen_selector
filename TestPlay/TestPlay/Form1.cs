@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Management;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace ScreenSelector
     public partial class ScreenSelector : Form
     {
         int currentOutput;
+        bool connected;
 
         int outputTag;
         int inputTag;
@@ -28,12 +30,14 @@ namespace ScreenSelector
 
             outputTag = 1;
             inputTag = 1;
-
+            connected = false;
             inputs = new List<Button>();
             outputs = new List<Button>();
             others = new List<Button>();
 
             InitializeComponent();
+
+            InitializeConnection();
 
             InitializeButton(TV2, ButtonType.OUTPUT);
             InitializeButton(TV1, ButtonType.OUTPUT);
@@ -49,6 +53,44 @@ namespace ScreenSelector
 
             InitializeButton(offOutputs, ButtonType.OTHER);
             offOutputs.Click += new EventHandler(offOutputs_Click);
+        }
+
+        private void InitializeConnection()
+        {
+            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
+
+            foreach (string port in ports)
+            {
+                char[] buffer = new char[8];
+
+                serialPort1.PortName = port;
+                serialPort1.Open();
+
+                if (!serialPort1.IsOpen) continue;
+
+                serialPort1.WriteTimeout = 500;
+                serialPort1.DiscardOutBuffer();
+                serialPort1.Write("Link ?;");
+
+                serialPort1.DiscardInBuffer();
+
+                try
+                {
+                    serialPort1.Read(buffer, 0, 8);
+                }
+                catch (System.TimeoutException)
+                {
+                    serialPort1.Close();
+                    continue;
+                }
+
+                serialPort1.Close();
+                connected = true;
+                break;
+            }
+
+            //if (!connected)
+            //    this.Close();
         }
 
         private void InitializeButton(Button button, ButtonType type)
@@ -123,12 +165,46 @@ namespace ScreenSelector
 
         private void SendCommand(string p)
         {
+            if (!connected)
+            {
+                MessageBox.Show("No Switcher Detected!", "Error", MessageBoxButtons.OK);
+
+                this.Close();
+                
+                return;
+            }
             serialPort1.WriteTimeout = 500;
             serialPort1.Open();
             serialPort1.WriteLine(p);
             serialPort1.DiscardOutBuffer();
             serialPort1.Close();
         }
+
+        private void Handle_Response(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+
+        }
+
+        //private List<USBDeviceInfo> GetUSBDevices()
+        //{
+        //    List<USBDeviceInfo> devices = new List<USBDeviceInfo>();
+
+        //    ManagementObjectCollection collection;
+        //    using (var searcher = new ManagementObjectSearcher(@"Select * From Win32_USBHub"))
+        //        collection = searcher.Get();
+
+        //    foreach (var device in collection)
+        //    {
+        //        devices.Add(new USBDeviceInfo(
+        //        (string)device.GetPropertyValue("DeviceID"),
+        //        (string)device.GetPropertyValue("PNPDeviceID"),
+        //        (string)device.GetPropertyValue("Description")
+        //        ));
+        //    }
+
+        //    collection.Dispose();
+        //    return devices;
+        //}
     }
 
     public enum ButtonType { INPUT, OUTPUT, OTHER }
@@ -147,4 +223,19 @@ namespace ScreenSelector
             _index = index;
         }
     }
+
+
+
+   // class USBDeviceInfo
+   // {
+   //     public USBDeviceInfo(string deviceID, string pnpDeviceID, string description)
+   //     {
+   //       this.DeviceID = deviceID;
+   //       this.PnpDeviceID = pnpDeviceID;
+   //       this.Description = description;
+   //     }
+   //     public string DeviceID { get; private set; }
+   //     public string PnpDeviceID { get; private set; }
+   //     public string Description { get; private set; }
+   //}
 }

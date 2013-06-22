@@ -56,10 +56,11 @@
             // 
             this.TV2.BackColor = System.Drawing.Color.White;
             this.TV2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV2.BackgroundImage")));
+            this.TV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TV2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.TV2.Location = new System.Drawing.Point(24, 12);
+            this.TV2.Location = new System.Drawing.Point(39, 182);
             this.TV2.Name = "TV2";
-            this.TV2.Size = new System.Drawing.Size(285, 211);
+            this.TV2.Size = new System.Drawing.Size(500, 300);
             this.TV2.TabIndex = 0;
             this.TV2.Text = "TV 2";
             this.TV2.UseVisualStyleBackColor = false;
@@ -68,10 +69,11 @@
             // 
             this.TV1.BackColor = System.Drawing.Color.White;
             this.TV1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV1.BackgroundImage")));
+            this.TV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TV1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.TV1.Location = new System.Drawing.Point(326, 12);
+            this.TV1.Location = new System.Drawing.Point(552, 182);
             this.TV1.Name = "TV1";
-            this.TV1.Size = new System.Drawing.Size(285, 211);
+            this.TV1.Size = new System.Drawing.Size(500, 300);
             this.TV1.TabIndex = 1;
             this.TV1.Text = "TV 1";
             this.TV1.UseVisualStyleBackColor = false;
@@ -79,10 +81,12 @@
             // Podium
             // 
             this.Podium.BackColor = System.Drawing.Color.White;
-            this.Podium.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Podium.Location = new System.Drawing.Point(617, 122);
+            this.Podium.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Podium.BackgroundImage")));
+            this.Podium.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Podium.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Podium.Location = new System.Drawing.Point(1089, 322);
             this.Podium.Name = "Podium";
-            this.Podium.Size = new System.Drawing.Size(143, 101);
+            this.Podium.Size = new System.Drawing.Size(143, 117);
             this.Podium.TabIndex = 2;
             this.Podium.Text = "Podium";
             this.Podium.UseVisualStyleBackColor = false;
@@ -90,28 +94,35 @@
             // presentation
             // 
             this.presentation.BackColor = System.Drawing.Color.White;
+            this.presentation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("presentation.BackgroundImage")));
+            this.presentation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.presentation.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.presentation.Location = new System.Drawing.Point(617, 12);
+            this.presentation.Location = new System.Drawing.Point(1089, 182);
             this.presentation.Name = "presentation";
-            this.presentation.Size = new System.Drawing.Size(143, 104);
+            this.presentation.Size = new System.Drawing.Size(143, 116);
             this.presentation.TabIndex = 3;
             this.presentation.Text = "Polycom Presentation";
+            this.presentation.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.presentation.UseVisualStyleBackColor = false;
             // 
             // recording
             // 
-            this.recording.BackColor = System.Drawing.Color.White;
-            this.recording.Location = new System.Drawing.Point(766, 77);
+            this.recording.BackColor = System.Drawing.Color.Black;
+            this.recording.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recording.BackgroundImage")));
+            this.recording.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.recording.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.recording.Location = new System.Drawing.Point(1123, 464);
             this.recording.Name = "recording";
-            this.recording.Size = new System.Drawing.Size(75, 80);
+            this.recording.Size = new System.Drawing.Size(77, 81);
             this.recording.TabIndex = 4;
-            this.recording.Text = "Recording";
+            this.recording.Text = "Record";
+            this.recording.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.recording.UseVisualStyleBackColor = false;
             // 
             // resPC1
             // 
             this.resPC1.BackColor = System.Drawing.Color.White;
-            this.resPC1.Location = new System.Drawing.Point(228, 272);
+            this.resPC1.Location = new System.Drawing.Point(415, 612);
             this.resPC1.Name = "resPC1";
             this.resPC1.Size = new System.Drawing.Size(75, 29);
             this.resPC1.TabIndex = 5;
@@ -121,7 +132,7 @@
             // resPC2
             // 
             this.resPC2.BackColor = System.Drawing.Color.White;
-            this.resPC2.Location = new System.Drawing.Point(309, 272);
+            this.resPC2.Location = new System.Drawing.Point(496, 612);
             this.resPC2.Name = "resPC2";
             this.resPC2.Size = new System.Drawing.Size(75, 29);
             this.resPC2.TabIndex = 6;
@@ -131,7 +142,7 @@
             // docCam
             // 
             this.docCam.BackColor = System.Drawing.Color.White;
-            this.docCam.Location = new System.Drawing.Point(390, 272);
+            this.docCam.Location = new System.Drawing.Point(577, 612);
             this.docCam.Name = "docCam";
             this.docCam.Size = new System.Drawing.Size(75, 29);
             this.docCam.TabIndex = 7;
@@ -141,7 +152,7 @@
             // polycomOut
             // 
             this.polycomOut.BackColor = System.Drawing.Color.White;
-            this.polycomOut.Location = new System.Drawing.Point(471, 272);
+            this.polycomOut.Location = new System.Drawing.Point(658, 612);
             this.polycomOut.Name = "polycomOut";
             this.polycomOut.Size = new System.Drawing.Size(75, 29);
             this.polycomOut.TabIndex = 8;
@@ -151,7 +162,7 @@
             // laptop
             // 
             this.laptop.BackColor = System.Drawing.Color.White;
-            this.laptop.Location = new System.Drawing.Point(147, 272);
+            this.laptop.Location = new System.Drawing.Point(334, 612);
             this.laptop.Name = "laptop";
             this.laptop.Size = new System.Drawing.Size(75, 29);
             this.laptop.TabIndex = 10;
@@ -161,7 +172,7 @@
             // offOutputs
             // 
             this.offOutputs.BackColor = System.Drawing.Color.White;
-            this.offOutputs.Location = new System.Drawing.Point(617, 270);
+            this.offOutputs.Location = new System.Drawing.Point(1089, 837);
             this.offOutputs.Name = "offOutputs";
             this.offOutputs.Size = new System.Drawing.Size(143, 31);
             this.offOutputs.TabIndex = 12;
@@ -175,7 +186,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(946, 646);
+            this.ClientSize = new System.Drawing.Size(1280, 1024);
             this.Controls.Add(this.laptop);
             this.Controls.Add(this.recording);
             this.Controls.Add(this.polycomOut);

@@ -185,6 +185,16 @@ namespace ScreenSelector
 
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void laptop_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //private List<USBDeviceInfo> GetUSBDevices()
         //{
         //    List<USBDeviceInfo> devices = new List<USBDeviceInfo>();

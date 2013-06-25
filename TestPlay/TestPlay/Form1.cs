@@ -109,7 +109,6 @@ namespace ScreenSelector
                     tag = new ButtonTag(type, inputTag++);
                     button.Click += new EventHandler(Handle_Button);
                     button.Tag = tag;
-                    button.Visible = false;
                     inputs.Add(button);
                     break;
                 case ButtonType.OTHER:
@@ -137,32 +136,46 @@ namespace ScreenSelector
 
             if (tag.GetButtonType == ButtonType.INPUT)
             {
-                // Send input switch command to SB
-                SendCommand(String.Format("Output0{1} 0{0};", tag.GetIndex, currentOutput).Trim());
-
-                // Hide the inputs
-                foreach (Button b in inputs)
-                {
-                    b.Visible = false;
-                }
+                target.DoDragDrop(tag.GetIndex, DragDropEffects.Copy | DragDropEffects.Move);
             }
-            else if (tag.GetButtonType == ButtonType.OUTPUT)
-            {
-                currentOutput = tag.GetIndex;
 
-                // Show the inputs
-                foreach (Button b in inputs)
-                {
-                    b.Visible = true;
-                }
-            }
+        // if (tag.GetButtonType == ButtonType.INPUT)
+        // {
+        //     // Send input switch command to SB
+        //     SendCommand(String.Format("Output0{1} 0{0};", tag.GetIndex, currentOutput).Trim());
+        //
+        //     // Hide the inputs
+        //     foreach (Button b in inputs)
+        //     {
+        //         b.Visible = false;
+        //     }
+        // }
+        // else if (tag.GetButtonType == ButtonType.OUTPUT)
+        // {
+        //     currentOutput = tag.GetIndex;
+        //
+        //     // Show the inputs
+        //     foreach (Button b in inputs)
+        //     {
+        //         b.Visible = true;
+        //     }
+        // }
         }
 
+        // handle buttone drop
+        private void OutputButton_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(ButtonType.Input))
+                e.Effect = DragDropEffects.Copy
+        }
+
+        // turn off all ShinyBow outputs
         private void offOutputs_Click(object sender, EventArgs e)
         {
             SendCommand(String.Format("Outputall 00;").Trim());
         }
 
+        // display a message if no ShinyBow is connected and exit
         private void SendCommand(string p)
         {
             if (!connected)
@@ -233,8 +246,6 @@ namespace ScreenSelector
             _index = index;
         }
     }
-
-
 
    // class USBDeviceInfo
    // {

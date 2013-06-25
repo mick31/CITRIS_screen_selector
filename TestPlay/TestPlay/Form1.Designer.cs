@@ -60,6 +60,7 @@
             // 
             // TV2
             // 
+            this.TV2.AllowDrop = true;
             this.TV2.BackColor = System.Drawing.Color.White;
             this.TV2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV2.BackgroundImage")));
             this.TV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -74,6 +75,7 @@
             // 
             // TV1
             // 
+            this.TV1.AllowDrop = true;
             this.TV1.BackColor = System.Drawing.Color.White;
             this.TV1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV1.BackgroundImage")));
             this.TV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -88,6 +90,7 @@
             // 
             // Podium
             // 
+            this.Podium.AllowDrop = true;
             this.Podium.BackColor = System.Drawing.Color.White;
             this.Podium.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Podium.BackgroundImage")));
             this.Podium.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -103,6 +106,7 @@
             // 
             // presentation
             // 
+            this.presentation.AllowDrop = true;
             this.presentation.BackColor = System.Drawing.Color.White;
             this.presentation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("presentation.BackgroundImage")));
             this.presentation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -256,7 +260,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.ClientSize = new System.Drawing.Size(1280, 920);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);

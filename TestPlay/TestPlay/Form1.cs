@@ -165,8 +165,9 @@ namespace ScreenSelector
         // handle buttone drop
         private void OutputButton_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(ButtonType.Input))
-                e.Effect = DragDropEffects.Copy
+            MessageBox.Show("Dropped It Like It's Hot!", "Made it", MessageBoxButtons.OK);
+            if (e.Data.GetDataPresent(DataFormats.Text))
+                e.Effect = DragDropEffects.Copy;
         }
 
         // turn off all ShinyBow outputs

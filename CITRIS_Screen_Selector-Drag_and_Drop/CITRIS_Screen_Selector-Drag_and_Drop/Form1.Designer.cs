@@ -47,6 +47,7 @@
             this.podium_frame = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.laptop = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).BeginInit();
@@ -60,7 +61,7 @@
             this.TitleBar.AutoSize = true;
             this.TitleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitleBar.ForeColor = System.Drawing.Color.Black;
-            this.TitleBar.Location = new System.Drawing.Point(484, 38);
+            this.TitleBar.Location = new System.Drawing.Point(484, 19);
             this.TitleBar.Name = "TitleBar";
             this.TitleBar.Size = new System.Drawing.Size(299, 42);
             this.TitleBar.TabIndex = 0;
@@ -148,9 +149,9 @@
             this.help.Cursor = System.Windows.Forms.Cursors.Default;
             this.help.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.help.Image = ((System.Drawing.Image)(resources.GetObject("help.Image")));
-            this.help.Location = new System.Drawing.Point(1128, 9);
+            this.help.Location = new System.Drawing.Point(1162, 9);
             this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(124, 163);
+            this.help.Size = new System.Drawing.Size(90, 119);
             this.help.TabIndex = 17;
             this.help.Text = "Help";
             this.help.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -158,15 +159,14 @@
             // 
             // help_instructions
             // 
-            this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_instructions.Location = new System.Drawing.Point(322, 93);
+            this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F);
+            this.help_instructions.Location = new System.Drawing.Point(263, 64);
             this.help_instructions.Multiline = true;
             this.help_instructions.Name = "help_instructions";
             this.help_instructions.ReadOnly = true;
-            this.help_instructions.Size = new System.Drawing.Size(630, 108);
+            this.help_instructions.Size = new System.Drawing.Size(774, 140);
             this.help_instructions.TabIndex = 18;
             this.help_instructions.Text = resources.GetString("help_instructions.Text");
-            this.help_instructions.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.help_instructions.Visible = false;
             // 
             // alloff
@@ -174,9 +174,9 @@
             this.alloff.BackColor = System.Drawing.Color.Transparent;
             this.alloff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alloff.Image = ((System.Drawing.Image)(resources.GetObject("alloff.Image")));
-            this.alloff.Location = new System.Drawing.Point(631, 571);
+            this.alloff.Location = new System.Drawing.Point(612, 606);
             this.alloff.Name = "alloff";
-            this.alloff.Size = new System.Drawing.Size(110, 183);
+            this.alloff.Size = new System.Drawing.Size(89, 148);
             this.alloff.TabIndex = 19;
             this.alloff.Text = "Power Off Displays";
             this.alloff.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -199,9 +199,9 @@
             this.podium.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.podium.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.podium.Image = ((System.Drawing.Image)(resources.GetObject("podium.Image")));
-            this.podium.Location = new System.Drawing.Point(1052, 381);
+            this.podium.Location = new System.Drawing.Point(1055, 386);
             this.podium.Name = "podium";
-            this.podium.Size = new System.Drawing.Size(185, 147);
+            this.podium.Size = new System.Drawing.Size(180, 138);
             this.podium.TabIndex = 21;
             this.podium.Text = "No Input";
             this.podium.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,21 +235,33 @@
             this.laptop.Size = new System.Drawing.Size(107, 108);
             this.laptop.TabIndex = 24;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(370, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(552, 25);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "(Drag and drop desired source onto the desired display.)";
+            // 
             // ScreenSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1264, 986);
             this.Controls.Add(this.laptop);
+            this.Controls.Add(this.help_instructions);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.alloff);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.podium);
             this.Controls.Add(this.podium_frame);
             this.Controls.Add(this.tv2_display);
-            this.Controls.Add(this.help_instructions);
             this.Controls.Add(this.help);
             this.Controls.Add(this.tv1_display);
             this.Controls.Add(this.pointingFinger);
@@ -292,6 +304,7 @@
         private System.Windows.Forms.PictureBox podium_frame;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label laptop;
+        private System.Windows.Forms.Label label1;
     }
 }
 

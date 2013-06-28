@@ -19,8 +19,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         Point ptHome;
 
         List<Label> outputs;
-        int outputTag;
-        int inputTag;
+        List<Image> orig_outputs;
         public enum LabelType { INPUT, OUTPUT, OTHER }
 
         public class LabelTag
@@ -47,30 +46,35 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             InitializeConnection();
             
             outputs = new List<Label>();
+            orig_outputs = new List<Image>();
 
             // initialize outputs
-            InitializeLabel(tv1_display, LabelType.OUTPUT, "No Output");
-            InitializeLabel(tv2_display, LabelType.OUTPUT, "No Output");
-            InitializeLabel(podium, LabelType.OUTPUT, "No Output");
+            InitializeLabel(tv1_display, LabelType.OUTPUT, 4, "No Output");
+            InitializeLabel(tv2_display, LabelType.OUTPUT, 5, "No Output");
+            InitializeLabel(podium, LabelType.OUTPUT, 6, "No Output");
             //InitializeLabel(polycom, LabelType.OUTPUT, "No Output");
 
             // initialize inputs
-            InitializeLabel(laptop, LabelType.INPUT, "Laptop");
+            InitializeLabel(laptop, LabelType.INPUT, 1, "Laptop");
         }
 
-        private void InitializeLabel(Label label, LabelType type, string displat_text)
+        // takes a label to tag, the type og tag, the index for the switcher matrix port, and the text to be displayed by default
+        private void InitializeLabel(Label label, LabelType type, int index, string displat_text)
         {
             LabelTag tag;
 
             switch (type)
             {
                 case LabelType.OUTPUT:
-                    tag = new LabelTag(type, outputTag++, displat_text);
+                    tag = new LabelTag(type, index, displat_text);
                     label.Tag = tag;
                     outputs.Add(label);
+
+                    // store original output properties
+                    orig_outputs.Add(label.Image);
                     break;
                 case LabelType.INPUT:
-                    tag = new LabelTag(type, inputTag++, displat_text);
+                    tag = new LabelTag(type, index, displat_text);
                     label.Tag = tag;
                     label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.input_MouseDown);
                     label.MouseLeave += new System.EventHandler(this.input_MouseLeave);
@@ -167,7 +171,13 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         // turn off all ShinyBow outputs
         private void offOutputs_Click(object sender, MouseEventArgs e)
         {
-            SendCommand(String.Format("Outputall 00;").Trim());
+            //SendCommand(String.Format("Outputall 00;").Trim());
+            for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
+            {
+                outputs[cur_out].Image = orig_outputs[cur_out];
+                outputs[cur_out].TextAlign = ContentAlignment.MiddleCenter;
+                outputs[cur_out].Text = "No Input";
+            }
         }
 
 

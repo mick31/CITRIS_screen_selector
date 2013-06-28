@@ -52,7 +52,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             InitializeLabel(tv1_display, LabelType.OUTPUT, 4, "No Output");
             InitializeLabel(tv2_display, LabelType.OUTPUT, 5, "No Output");
             InitializeLabel(podium, LabelType.OUTPUT, 6, "No Output");
-            //InitializeLabel(polycom, LabelType.OUTPUT, "No Output");
+            InitializeLabel(polycom_out, LabelType.OUTPUT, 7, "No Output");
 
             // initialize inputs
             InitializeLabel(laptop, LabelType.INPUT, 1, "Laptop");
@@ -137,7 +137,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                     LabelTag outTag = (LabelTag)outputs[cur_out].Tag;
                     LabelTag inTag = (LabelTag)cur_input.Tag;
                     // Send input switch command to SB
-                    //SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
+                 //   SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
 
                     // change outputs display
                     outputs[cur_out].Image = cur_input.Image;
@@ -171,7 +171,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         // turn off all ShinyBow outputs
         private void offOutputs_Click(object sender, MouseEventArgs e)
         {
-            //SendCommand(String.Format("Outputall 00;").Trim());
+          //  SendCommand(String.Format("Outputall 00;").Trim());
             for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
             {
                 outputs[cur_out].Image = orig_outputs[cur_out];
@@ -225,7 +225,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         {
             if (!connected)
             {
-                MessageBox.Show("No Switcher Detected!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("No Switcher Detected! Please Contact CITRIS\n tech lab: (831)502-7399", "Error", MessageBoxButtons.OK);
 
                 this.Close();
 

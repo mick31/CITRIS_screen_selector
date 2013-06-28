@@ -28,25 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenSelector));
             this.TitleBar = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Sources = new System.Windows.Forms.Label();
+            this.Displays = new System.Windows.Forms.Label();
             this.TV2_Border = new System.Windows.Forms.PictureBox();
             this.k = new System.Windows.Forms.PictureBox();
-            this.res_pc1 = new System.Windows.Forms.PictureBox();
-            this.laptop = new System.Windows.Forms.PictureBox();
             this.pointingFinger = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tv1_display = new System.Windows.Forms.Label();
             this.help = new System.Windows.Forms.Label();
             this.help_instructions = new System.Windows.Forms.TextBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.alloff = new System.Windows.Forms.Label();
+            this.tv2_display = new System.Windows.Forms.Label();
+            this.podium = new System.Windows.Forms.Label();
+            this.podium_frame = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.laptop = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.res_pc1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.laptop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleBar
@@ -61,33 +67,33 @@
             this.TitleBar.Text = "Screen Selector";
             this.TitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // Sources
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(42, 229);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 42);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Inputs";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Sources.AutoSize = true;
+            this.Sources.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sources.Location = new System.Drawing.Point(22, 229);
+            this.Sources.Name = "Sources";
+            this.Sources.Size = new System.Drawing.Size(156, 42);
+            this.Sources.TabIndex = 1;
+            this.Sources.Text = "Sources";
+            this.Sources.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // Displays
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(661, 229);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 42);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Outputs";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Displays.AutoSize = true;
+            this.Displays.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Displays.Location = new System.Drawing.Point(645, 229);
+            this.Displays.Name = "Displays";
+            this.Displays.Size = new System.Drawing.Size(160, 42);
+            this.Displays.TabIndex = 2;
+            this.Displays.Text = "Displays";
+            this.Displays.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TV2_Border
             // 
             this.TV2_Border.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TV2_Border.BackgroundImage")));
             this.TV2_Border.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.TV2_Border.Location = new System.Drawing.Point(322, 295);
+            this.TV2_Border.Location = new System.Drawing.Point(283, 289);
             this.TV2_Border.Name = "TV2_Border";
             this.TV2_Border.Size = new System.Drawing.Size(372, 225);
             this.TV2_Border.TabIndex = 3;
@@ -97,46 +103,19 @@
             // 
             this.k.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("k.BackgroundImage")));
             this.k.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.k.Location = new System.Drawing.Point(721, 295);
+            this.k.Location = new System.Drawing.Point(665, 289);
             this.k.Name = "k";
             this.k.Size = new System.Drawing.Size(372, 225);
             this.k.TabIndex = 6;
             this.k.TabStop = false;
             // 
-            // res_pc1
-            // 
-            this.res_pc1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("res_pc1.BackgroundImage")));
-            this.res_pc1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.res_pc1.Location = new System.Drawing.Point(49, 411);
-            this.res_pc1.Name = "res_pc1";
-            this.res_pc1.Size = new System.Drawing.Size(107, 109);
-            this.res_pc1.TabIndex = 11;
-            this.res_pc1.TabStop = false;
-            this.res_pc1.MouseLeave += new System.EventHandler(this.respc1_MouseLeave);
-            this.res_pc1.MouseHover += new System.EventHandler(this.respc1_MouseHover);
-            // 
-            // laptop
-            // 
-            this.laptop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("laptop.BackgroundImage")));
-            this.laptop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.laptop.Location = new System.Drawing.Point(49, 301);
-            this.laptop.Name = "laptop";
-            this.laptop.Size = new System.Drawing.Size(107, 108);
-            this.laptop.TabIndex = 12;
-            this.laptop.TabStop = false;
-            this.laptop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.laptop_MouseDown);
-            this.laptop.MouseLeave += new System.EventHandler(this.laptop_MouseLeave);
-            this.laptop.MouseHover += new System.EventHandler(this.laptop_MouseHover);
-            this.laptop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.laptop_MouseMove);
-            this.laptop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.laptop_MouseUp);
-            // 
             // pointingFinger
             // 
             this.pointingFinger.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pointingFinger.BackgroundImage")));
             this.pointingFinger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pointingFinger.Location = new System.Drawing.Point(180, 229);
+            this.pointingFinger.Location = new System.Drawing.Point(196, 229);
             this.pointingFinger.Name = "pointingFinger";
-            this.pointingFinger.Size = new System.Drawing.Size(115, 53);
+            this.pointingFinger.Size = new System.Drawing.Size(104, 42);
             this.pointingFinger.TabIndex = 13;
             this.pointingFinger.TabStop = false;
             this.pointingFinger.Visible = false;
@@ -156,7 +135,7 @@
             this.tv1_display.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv1_display.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tv1_display.Image = ((System.Drawing.Image)(resources.GetObject("tv1_display.Image")));
-            this.tv1_display.Location = new System.Drawing.Point(328, 301);
+            this.tv1_display.Location = new System.Drawing.Point(289, 295);
             this.tv1_display.Name = "tv1_display";
             this.tv1_display.Size = new System.Drawing.Size(360, 205);
             this.tv1_display.TabIndex = 16;
@@ -175,8 +154,7 @@
             this.help.TabIndex = 17;
             this.help.Text = "Help";
             this.help.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.help.MouseLeave += new System.EventHandler(this.help_MouseLeave);
-            this.help.MouseHover += new System.EventHandler(this.help_MouseHover);
+            this.help.MouseClick += new System.Windows.Forms.MouseEventHandler(this.help_MouseClick);
             // 
             // help_instructions
             // 
@@ -191,6 +169,72 @@
             this.help_instructions.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.help_instructions.Visible = false;
             // 
+            // alloff
+            // 
+            this.alloff.BackColor = System.Drawing.Color.Transparent;
+            this.alloff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alloff.Image = ((System.Drawing.Image)(resources.GetObject("alloff.Image")));
+            this.alloff.Location = new System.Drawing.Point(631, 571);
+            this.alloff.Name = "alloff";
+            this.alloff.Size = new System.Drawing.Size(110, 183);
+            this.alloff.TabIndex = 19;
+            this.alloff.Text = "Power Off Displays";
+            this.alloff.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.alloff.MouseClick += new System.Windows.Forms.MouseEventHandler(this.offOutputs_Click);
+            // 
+            // tv2_display
+            // 
+            this.tv2_display.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv2_display.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tv2_display.Image = ((System.Drawing.Image)(resources.GetObject("tv2_display.Image")));
+            this.tv2_display.Location = new System.Drawing.Point(671, 295);
+            this.tv2_display.Name = "tv2_display";
+            this.tv2_display.Size = new System.Drawing.Size(360, 205);
+            this.tv2_display.TabIndex = 20;
+            this.tv2_display.Text = "No Input";
+            this.tv2_display.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // podium
+            // 
+            this.podium.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.podium.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.podium.Image = ((System.Drawing.Image)(resources.GetObject("podium.Image")));
+            this.podium.Location = new System.Drawing.Point(1052, 381);
+            this.podium.Name = "podium";
+            this.podium.Size = new System.Drawing.Size(185, 147);
+            this.podium.TabIndex = 21;
+            this.podium.Text = "No Input";
+            this.podium.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // podium_frame
+            // 
+            this.podium_frame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("podium_frame.BackgroundImage")));
+            this.podium_frame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.podium_frame.Location = new System.Drawing.Point(1048, 374);
+            this.podium_frame.Name = "podium_frame";
+            this.podium_frame.Size = new System.Drawing.Size(195, 162);
+            this.podium_frame.TabIndex = 22;
+            this.podium_frame.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(1023, 531);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(240, 311);
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
+            // 
+            // laptop
+            // 
+            this.laptop.BackColor = System.Drawing.Color.Transparent;
+            this.laptop.Image = ((System.Drawing.Image)(resources.GetObject("laptop.Image")));
+            this.laptop.Location = new System.Drawing.Point(42, 295);
+            this.laptop.Name = "laptop";
+            this.laptop.Size = new System.Drawing.Size(107, 108);
+            this.laptop.TabIndex = 24;
+            // 
             // ScreenSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,17 +242,21 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1264, 986);
+            this.Controls.Add(this.laptop);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.alloff);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.podium);
+            this.Controls.Add(this.podium_frame);
+            this.Controls.Add(this.tv2_display);
             this.Controls.Add(this.help_instructions);
             this.Controls.Add(this.help);
-            this.Controls.Add(this.res_pc1);
-            this.Controls.Add(this.laptop);
             this.Controls.Add(this.tv1_display);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pointingFinger);
             this.Controls.Add(this.k);
             this.Controls.Add(this.TV2_Border);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Displays);
+            this.Controls.Add(this.Sources);
             this.Controls.Add(this.TitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ScreenSelector";
@@ -216,10 +264,10 @@
             this.Text = "I/O Selector";
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.k)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.res_pc1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.laptop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,17 +276,22 @@
         #endregion
 
         private System.Windows.Forms.Label TitleBar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Sources;
+        private System.Windows.Forms.Label Displays;
         private System.Windows.Forms.PictureBox TV2_Border;
         private System.Windows.Forms.PictureBox k;
-        private System.Windows.Forms.PictureBox res_pc1;
-        private System.Windows.Forms.PictureBox laptop;
         private System.Windows.Forms.PictureBox pointingFinger;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label tv1_display;
         private System.Windows.Forms.Label help;
         private System.Windows.Forms.TextBox help_instructions;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Label alloff;
+        private System.Windows.Forms.Label tv2_display;
+        private System.Windows.Forms.Label podium;
+        private System.Windows.Forms.PictureBox podium_frame;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label laptop;
     }
 }
 

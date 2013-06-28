@@ -13,136 +13,234 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
     {
         bool isDragged = false;
         bool setHomePosition = true;
+        bool connected;
+        bool can_see_help = false;
         Point ptOffset;
         Point ptHome;
+
+        List<Label> outputs;
+        int outputTag;
+        int inputTag;
+        public enum LabelType { INPUT, OUTPUT, OTHER }
+
+        public class LabelTag
+        {
+            private LabelType _type;
+            private int _index;
+            private string _display_text;
+
+            public LabelType GetLabelType { get { return _type; } }
+            public int GetIndex { get { return _index; } }
+            public string GetDisplayText { get { return _display_text; } }
+
+            public LabelTag(LabelType type, int index, string display_text)
+            {
+                _type = type;
+                _index = index;
+                _display_text = display_text;
+            }
+        }
 
         public ScreenSelector()
         {
             InitializeComponent();
+            InitializeConnection();
+            
+            outputs = new List<Label>();
+
+            // initialize outputs
+            InitializeLabel(tv1_display, LabelType.OUTPUT, "No Output");
+            InitializeLabel(tv2_display, LabelType.OUTPUT, "No Output");
+            InitializeLabel(podium, LabelType.OUTPUT, "No Output");
+            //InitializeLabel(polycom, LabelType.OUTPUT, "No Output");
+
+            // initialize inputs
+            InitializeLabel(laptop, LabelType.INPUT, "Laptop");
         }
 
-        private void TitleBar_Click(object sender, EventArgs e)
+        private void InitializeLabel(Label label, LabelType type, string displat_text)
         {
+            LabelTag tag;
 
+            switch (type)
+            {
+                case LabelType.OUTPUT:
+                    tag = new LabelTag(type, outputTag++, displat_text);
+                    label.Tag = tag;
+                    outputs.Add(label);
+                    break;
+                case LabelType.INPUT:
+                    tag = new LabelTag(type, inputTag++, displat_text);
+                    label.Tag = tag;
+                    label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.input_MouseDown);
+                    label.MouseLeave += new System.EventHandler(this.input_MouseLeave);
+                    label.MouseHover += new System.EventHandler(this.input_MouseHover);
+                    label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.input_MouseMove);
+                    label.MouseUp += new System.Windows.Forms.MouseEventHandler(this.input_MouseUp);
+                    break;
+                case LabelType.OTHER:
+                    tag = new LabelTag(type, -1, displat_text);
+                    label.Tag = tag;
+                    break;
+                default:
+                    break;
+            }
         }
 
 
         /************************************************************
          * Source to Display Functions
          * **********************************************************/
-        private void laptop_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void input_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
+                Label cur_input = (Label)sender;
                 isDragged = true;
-                Point ptStartPosition = laptop.PointToScreen(new Point(e.X, e.Y));
+                Point ptStartPosition = cur_input.PointToScreen(new Point(e.X, e.Y));
                 if (setHomePosition)
                 {
                     setHomePosition = false;
-                    ptHome = laptop.Location;
+                    ptHome = cur_input.Location;
                 }
 
                 ptOffset = new Point();
-                ptOffset.X = laptop.Location.X - ptStartPosition.X;
-                ptOffset.Y = laptop.Location.Y - ptStartPosition.Y;
+                ptOffset.X = cur_input.Location.X - ptStartPosition.X;
+                ptOffset.Y = cur_input.Location.Y - ptStartPosition.Y;
             }
             else
                 isDragged = false;
         }
 
-        private void laptop_MouseMove(object sender, MouseEventArgs e)
+        private void input_MouseMove(object sender, MouseEventArgs e)
         {
-            if(isDragged)
+            if (isDragged)
             {
-                Point newPoint = laptop.PointToScreen(new Point(e.X, e.Y));
+                Label cur_input = (Label)sender;
+                Point newPoint = cur_input.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(ptOffset);
-                laptop.Location = newPoint;
+                cur_input.Location = newPoint;
             }
         }
 
-        private void laptop_MouseUp(object sender, MouseEventArgs e)
+        private void input_MouseUp(object sender, MouseEventArgs e)
         {
-            if (tv1_display.Bounds.Contains(laptop.Bounds))
+            Label cur_input = (Label)sender;
+            for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
             {
-                tv1_display.Image = laptop.BackgroundImage;
-                tv1_display.Text = "Laptop";
+                if (outputs[cur_out].Bounds.Contains(cur_input.Bounds))
+                {
+                    LabelTag outTag = (LabelTag)outputs[cur_out].Tag;
+                    LabelTag inTag = (LabelTag)cur_input.Tag;
+                    // Send input switch command to SB
+                    //SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
+
+                    // change outputs display
+                    outputs[cur_out].Image = cur_input.Image;
+                    outputs[cur_out].TextAlign = ContentAlignment.BottomCenter;
+                    outputs[cur_out].Text = (String)inTag.GetDisplayText;
+                    break;
+                }
             }
 
             //reset button position
             isDragged = false;
             setHomePosition = true;
-            laptop.Location = ptHome;
+            cur_input.Location = ptHome;
         }
 
-        private void laptop_MouseHover(object sender, EventArgs e)
+        private void input_MouseHover(object sender, EventArgs e)
         {
-            laptop.BorderStyle = BorderStyle.FixedSingle;
+            Label cur_input = (Label)sender;
+            cur_input.BorderStyle = BorderStyle.FixedSingle;
             pointingFinger.Visible = true;
         }
 
-        private void laptop_MouseLeave(object sender, EventArgs e)
+        private void input_MouseLeave(object sender, EventArgs e)
         {
-            laptop.BorderStyle = BorderStyle.None;
+            Label cur_input = (Label)sender;
+            cur_input.BorderStyle = BorderStyle.None;
             pointingFinger.Visible = false;
         }
 
-        private void respc1_MouseHover(object sender, EventArgs e)
+
+        // turn off all ShinyBow outputs
+        private void offOutputs_Click(object sender, MouseEventArgs e)
         {
-            res_pc1.BorderStyle = BorderStyle.FixedSingle;
-            pointingFinger.Visible = true;
+            SendCommand(String.Format("Outputall 00;").Trim());
         }
 
-        private void respc1_MouseLeave(object sender, EventArgs e)
+
+        /************************************************************
+         * Shinybow Interface Functions
+         * **********************************************************/
+        // check to ports to see if shinybow is connected
+        private void InitializeConnection()
         {
-            res_pc1.BorderStyle = BorderStyle.None;
-            pointingFinger.Visible = false;
+            string[] ports = System.IO.Ports.SerialPort.GetPortNames();
+
+            foreach (string port in ports)
+            {
+                char[] buffer = new char[8];
+
+                serialPort1.PortName = port;
+                serialPort1.Open();
+
+                if (!serialPort1.IsOpen) continue;
+
+                serialPort1.WriteTimeout = 500;
+                serialPort1.DiscardOutBuffer();
+                serialPort1.Write("Link ?;");
+
+                serialPort1.DiscardInBuffer();
+
+                try
+                {
+                    serialPort1.Read(buffer, 0, 8);
+                }
+                catch (System.TimeoutException)
+                {
+                    serialPort1.Close();
+                    continue;
+                }
+
+                serialPort1.Close();
+                connected = true;
+                break;
+            }
+        }
+
+        // display a message if no ShinyBow is connected and exit
+        private void SendCommand(string p)
+        {
+            if (!connected)
+            {
+                MessageBox.Show("No Switcher Detected!", "Error", MessageBoxButtons.OK);
+
+                this.Close();
+
+                return;
+            }
+            serialPort1.WriteTimeout = 500;
+            serialPort1.Open();
+            serialPort1.WriteLine(p);
+            serialPort1.DiscardOutBuffer();
+            serialPort1.Close();
         }
 
 
         /************************************************************
          * Help Button Functions
          * **********************************************************/
-        private void help_MouseHover(object sender, EventArgs e)
+        private void help_MouseClick(object sender, MouseEventArgs e)
         {
-            help_instructions.Visible = true;
+            can_see_help = !can_see_help;
+            if (can_see_help)
+                help.BorderStyle = BorderStyle.Fixed3D;
+            else
+                help.BorderStyle = BorderStyle.None;
+
+            help_instructions.Visible = can_see_help;
         }
-
-        private void help_MouseLeave(object sender, EventArgs e)
-        {
-            help_instructions.Visible = false;
-        }
-
-
-
-        
-
-        //private void laptop_DragDrop(object sender, DragEventArgs e)
-        //{
-        //    laptop.DoDragDrop(laptop, DragDropEffects.Copy | DragDropEffects.Move);
-        //}
-
-        //private void laptop_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        //{
-        //    laptop.DoDragDrop(laptop, DragDropEffects.Copy | DragDropEffects.Move);
-        //}
-
-        //private void tv1_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
-        //{
-        //    if (sender is Button)
-        //        e.Effect = DragDropEffects.Copy;
-        //    else
-        //        e.Effect = DragDropEffects.None;
-        //}
-
-        //private void tv1_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
-        //{
-        //    if (!(e.Data is Button))
-        //        MessageBox.Show("BLOWING IT");
-            
-        //    Button input_button = (Button)e.Data;
-        //    TV1_Display.BackgroundImage = input_button.BackgroundImage;
-        //    TV1_Display.Text = input_button.Text;
-
-        //}
     }
 }

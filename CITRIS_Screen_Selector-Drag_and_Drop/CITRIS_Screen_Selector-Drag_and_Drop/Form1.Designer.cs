@@ -49,16 +49,18 @@
             this.laptop = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.polycom_out = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.doccam = new System.Windows.Forms.Label();
+            this.desktop1 = new System.Windows.Forms.Label();
+            this.polycom_in = new System.Windows.Forms.Label();
+            this.desktop2 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleBar
@@ -66,7 +68,7 @@
             this.TitleBar.AutoSize = true;
             this.TitleBar.Font = new System.Drawing.Font("Bookman Old Style", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitleBar.ForeColor = System.Drawing.Color.Black;
-            this.TitleBar.Location = new System.Drawing.Point(493, 9);
+            this.TitleBar.Location = new System.Drawing.Point(474, 4);
             this.TitleBar.Name = "TitleBar";
             this.TitleBar.Size = new System.Drawing.Size(319, 44);
             this.TitleBar.TabIndex = 0;
@@ -77,7 +79,7 @@
             // 
             this.Sources.AutoSize = true;
             this.Sources.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sources.Location = new System.Drawing.Point(19, 207);
+            this.Sources.Location = new System.Drawing.Point(20, 219);
             this.Sources.Name = "Sources";
             this.Sources.Size = new System.Drawing.Size(156, 42);
             this.Sources.TabIndex = 1;
@@ -88,7 +90,7 @@
             // 
             this.Displays.AutoSize = true;
             this.Displays.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Displays.Location = new System.Drawing.Point(550, 207);
+            this.Displays.Location = new System.Drawing.Point(551, 219);
             this.Displays.Name = "Displays";
             this.Displays.Size = new System.Drawing.Size(160, 42);
             this.Displays.TabIndex = 2;
@@ -119,7 +121,7 @@
             // 
             this.pointingFinger.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pointingFinger.BackgroundImage")));
             this.pointingFinger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pointingFinger.Location = new System.Drawing.Point(193, 207);
+            this.pointingFinger.Location = new System.Drawing.Point(199, 227);
             this.pointingFinger.Name = "pointingFinger";
             this.pointingFinger.Size = new System.Drawing.Size(104, 42);
             this.pointingFinger.TabIndex = 13;
@@ -164,12 +166,12 @@
             // 
             // help_instructions
             // 
-            this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F);
-            this.help_instructions.Location = new System.Drawing.Point(263, 64);
+            this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
+            this.help_instructions.Location = new System.Drawing.Point(243, 51);
             this.help_instructions.Multiline = true;
             this.help_instructions.Name = "help_instructions";
             this.help_instructions.ReadOnly = true;
-            this.help_instructions.Size = new System.Drawing.Size(774, 140);
+            this.help_instructions.Size = new System.Drawing.Size(774, 170);
             this.help_instructions.TabIndex = 18;
             this.help_instructions.Text = resources.GetString("help_instructions.Text");
             this.help_instructions.Visible = false;
@@ -179,7 +181,7 @@
             this.alloff.BackColor = System.Drawing.Color.Transparent;
             this.alloff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alloff.Image = ((System.Drawing.Image)(resources.GetObject("alloff.Image")));
-            this.alloff.Location = new System.Drawing.Point(583, 603);
+            this.alloff.Location = new System.Drawing.Point(542, 569);
             this.alloff.Name = "alloff";
             this.alloff.Size = new System.Drawing.Size(159, 151);
             this.alloff.TabIndex = 19;
@@ -235,7 +237,7 @@
             // 
             this.laptop.BackColor = System.Drawing.Color.Transparent;
             this.laptop.Image = ((System.Drawing.Image)(resources.GetObject("laptop.Image")));
-            this.laptop.Location = new System.Drawing.Point(39, 249);
+            this.laptop.Location = new System.Drawing.Point(49, 260);
             this.laptop.Name = "laptop";
             this.laptop.Size = new System.Drawing.Size(107, 108);
             this.laptop.TabIndex = 24;
@@ -245,59 +247,71 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(370, 95);
+            this.label1.Location = new System.Drawing.Point(238, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(552, 25);
+            this.label1.Size = new System.Drawing.Size(786, 25);
             this.label1.TabIndex = 25;
-            this.label1.Text = "(Drag and drop desired source onto the desired display.)";
+            this.label1.Text = "(Drag and drop desired source onto the desired display. Click display to remove.)" +
+    "";
             // 
             // polycom_out
             // 
             this.polycom_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.polycom_out.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.polycom_out.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.polycom_out.Image = ((System.Drawing.Image)(resources.GetObject("polycom_out.Image")));
-            this.polycom_out.Location = new System.Drawing.Point(1048, 238);
+            this.polycom_out.Location = new System.Drawing.Point(1038, 232);
             this.polycom_out.Name = "polycom_out";
-            this.polycom_out.Size = new System.Drawing.Size(198, 133);
+            this.polycom_out.Size = new System.Drawing.Size(205, 124);
             this.polycom_out.TabIndex = 26;
-            this.polycom_out.Text = "   No    Input";
-            this.polycom_out.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.polycom_out.Text = "No Input";
+            this.polycom_out.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // doccam
             // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
-            this.label2.Location = new System.Drawing.Point(18, 364);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 108);
-            this.label2.TabIndex = 27;
+            this.doccam.BackColor = System.Drawing.Color.Transparent;
+            this.doccam.Image = ((System.Drawing.Image)(resources.GetObject("doccam.Image")));
+            this.doccam.Location = new System.Drawing.Point(19, 373);
+            this.doccam.Name = "doccam";
+            this.doccam.Size = new System.Drawing.Size(153, 99);
+            this.doccam.TabIndex = 27;
             // 
-            // label3
+            // desktop1
             // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
-            this.label3.Location = new System.Drawing.Point(18, 598);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 108);
-            this.label3.TabIndex = 29;
+            this.desktop1.BackColor = System.Drawing.Color.Transparent;
+            this.desktop1.Image = ((System.Drawing.Image)(resources.GetObject("desktop1.Image")));
+            this.desktop1.Location = new System.Drawing.Point(18, 601);
+            this.desktop1.Name = "desktop1";
+            this.desktop1.Size = new System.Drawing.Size(158, 108);
+            this.desktop1.TabIndex = 29;
             // 
-            // label4
+            // polycom_in
             // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
-            this.label4.Location = new System.Drawing.Point(39, 483);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 108);
-            this.label4.TabIndex = 28;
+            this.polycom_in.BackColor = System.Drawing.Color.Transparent;
+            this.polycom_in.Image = ((System.Drawing.Image)(resources.GetObject("polycom_in.Image")));
+            this.polycom_in.Location = new System.Drawing.Point(39, 483);
+            this.polycom_in.Name = "polycom_in";
+            this.polycom_in.Size = new System.Drawing.Size(117, 108);
+            this.polycom_in.TabIndex = 28;
             // 
-            // label5
+            // desktop2
             // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
-            this.label5.Location = new System.Drawing.Point(18, 706);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 108);
-            this.label5.TabIndex = 30;
+            this.desktop2.BackColor = System.Drawing.Color.Transparent;
+            this.desktop2.Image = ((System.Drawing.Image)(resources.GetObject("desktop2.Image")));
+            this.desktop2.Location = new System.Drawing.Point(17, 719);
+            this.desktop2.Name = "desktop2";
+            this.desktop2.Size = new System.Drawing.Size(158, 98);
+            this.desktop2.TabIndex = 30;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(1023, 177);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(236, 191);
+            this.pictureBox3.TabIndex = 31;
+            this.pictureBox3.TabStop = false;
             // 
             // ScreenSelector
             // 
@@ -306,13 +320,14 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1264, 986);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.desktop2);
+            this.Controls.Add(this.desktop1);
+            this.Controls.Add(this.polycom_in);
+            this.Controls.Add(this.doccam);
             this.Controls.Add(this.laptop);
-            this.Controls.Add(this.polycom_out);
             this.Controls.Add(this.help_instructions);
+            this.Controls.Add(this.polycom_out);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.alloff);
@@ -338,6 +353,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,10 +380,11 @@
         private System.Windows.Forms.Label laptop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label polycom_out;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label doccam;
+        private System.Windows.Forms.Label desktop1;
+        private System.Windows.Forms.Label polycom_in;
+        private System.Windows.Forms.Label desktop2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

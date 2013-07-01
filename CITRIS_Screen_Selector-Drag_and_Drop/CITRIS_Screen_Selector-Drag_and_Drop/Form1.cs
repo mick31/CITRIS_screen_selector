@@ -27,16 +27,22 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             private LabelType _type;
             private int _index;
             private string _display_text;
+            private Image _highlight_img;
+            private Image _norm_img;
 
             public LabelType GetLabelType { get { return _type; } }
             public int GetIndex { get { return _index; } }
             public string GetDisplayText { get { return _display_text; } }
+            public Image GetHighImage { get { return _highlight_img; } }
+            public Image GetNormImage { get { return _norm_img; } }
 
-            public LabelTag(LabelType type, int index, string display_text)
+            public LabelTag(LabelType type, int index, string display_text, Image highlight_img, Image norm_img)
             {
                 _type = type;
                 _index = index;
                 _display_text = display_text;
+                _highlight_img = highlight_img;
+                _norm_img = norm_img;
             }
         }
 
@@ -48,33 +54,46 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             outputs = new List<Label>();
             orig_outputs = new List<Image>();
 
+            Image output_highlight = tv1_display.Image;
+
+            Image laptop_highlight = Image.FromFile("ScreenSelector_Laptop-Highlight.png");
+            Image doccam_highlight = Image.FromFile("ScreenSelector_DocCam-Highlight.png");
+            Image ploycom_highlight = Image.FromFile("ScreenSelector_PolyComm-Highlight.png");
+            Image desktop1_highlight = Image.FromFile("ScreenSelector_Desktop1-Highlight.png");
+            Image desktop2_highlight = Image.FromFile("ScreenSelector_Desktop2-Highlight.png");
+
             // initialize outputs
-            InitializeLabel(tv1_display, LabelType.OUTPUT, 4, "No Output");
-            InitializeLabel(tv2_display, LabelType.OUTPUT, 5, "No Output");
-            InitializeLabel(podium, LabelType.OUTPUT, 6, "No Output");
-            InitializeLabel(polycom_out, LabelType.OUTPUT, 7, "No Output");
+            InitializeLabel(tv1_display, LabelType.OUTPUT, 4, "No Output", output_highlight);
+            InitializeLabel(tv2_display, LabelType.OUTPUT, 5, "No Output", output_highlight);
+            InitializeLabel(podium, LabelType.OUTPUT, 6, "No Output", output_highlight);
+            InitializeLabel(polycom_out, LabelType.OUTPUT, 7, "No Output", output_highlight);
 
             // initialize inputs
-            InitializeLabel(laptop, LabelType.INPUT, 1, "Laptop");
+            InitializeLabel(laptop, LabelType.INPUT, 1, "", laptop_highlight);
+            InitializeLabel(doccam, LabelType.INPUT, 1, "", doccam_highlight);
+            InitializeLabel(polycom_in, LabelType.INPUT, 1, "", ploycom_highlight);
+            InitializeLabel(desktop1, LabelType.INPUT, 1, "", desktop1_highlight);
+            InitializeLabel(desktop2, LabelType.INPUT, 1, "", desktop2_highlight);
         }
 
         // takes a label to tag, the type og tag, the index for the switcher matrix port, and the text to be displayed by default
-        private void InitializeLabel(Label label, LabelType type, int index, string displat_text)
+        private void InitializeLabel(Label label, LabelType type, int index, string displat_text, Image highlight_img)
         {
             LabelTag tag;
 
             switch (type)
             {
                 case LabelType.OUTPUT:
-                    tag = new LabelTag(type, index, displat_text);
+                    tag = new LabelTag(type, index, displat_text, highlight_img, label.Image);
                     label.Tag = tag;
+                    label.MouseClick += new System.Windows.Forms.MouseEventHandler(this.output_MouseClick);
                     outputs.Add(label);
 
                     // store original output properties
                     orig_outputs.Add(label.Image);
                     break;
                 case LabelType.INPUT:
-                    tag = new LabelTag(type, index, displat_text);
+                    tag = new LabelTag(type, index, displat_text, highlight_img, label.Image);
                     label.Tag = tag;
                     label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.input_MouseDown);
                     label.MouseLeave += new System.EventHandler(this.input_MouseLeave);
@@ -83,7 +102,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                     label.MouseUp += new System.Windows.Forms.MouseEventHandler(this.input_MouseUp);
                     break;
                 case LabelType.OTHER:
-                    tag = new LabelTag(type, -1, displat_text);
+                    tag = new LabelTag(type, -1, displat_text, highlight_img, label.Image);
                     label.Tag = tag;
                     break;
                 default:
@@ -137,10 +156,10 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                     LabelTag outTag = (LabelTag)outputs[cur_out].Tag;
                     LabelTag inTag = (LabelTag)cur_input.Tag;
                     // Send input switch command to SB
-                 //   SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
+                    SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
 
                     // change outputs display
-                    outputs[cur_out].Image = cur_input.Image;
+                    outputs[cur_out].Image = inTag.GetNormImage;
                     outputs[cur_out].TextAlign = ContentAlignment.BottomCenter;
                     outputs[cur_out].Text = (String)inTag.GetDisplayText;
                     break;
@@ -156,22 +175,40 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         private void input_MouseHover(object sender, EventArgs e)
         {
             Label cur_input = (Label)sender;
-            cur_input.BorderStyle = BorderStyle.FixedSingle;
+            LabelTag cur_tag = (LabelTag)cur_input.Tag;
+
+            cur_input.Image = cur_tag.GetHighImage;
+            cur_input.Tag = cur_tag;
+            
             pointingFinger.Visible = true;
         }
 
         private void input_MouseLeave(object sender, EventArgs e)
         {
             Label cur_input = (Label)sender;
-            cur_input.BorderStyle = BorderStyle.None;
+            LabelTag cur_tag = (LabelTag)cur_input.Tag;
+
+            cur_input.Image = cur_tag.GetNormImage;
+            cur_input.Tag = cur_tag;
+            
             pointingFinger.Visible = false;
         }
 
 
+        private void output_MouseClick(object sender, EventArgs e)
+        {
+            Label cur_output = (Label)sender;
+            LabelTag cur_tag = (LabelTag)cur_output.Tag;
+            SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
+            cur_output.Image = cur_tag.GetNormImage;
+            cur_output.TextAlign = ContentAlignment.MiddleCenter;
+            cur_output.Text = "No Input";
+        }
+
         // turn off all ShinyBow outputs
         private void offOutputs_Click(object sender, MouseEventArgs e)
         {
-          //  SendCommand(String.Format("Outputall 00;").Trim());
+            SendCommand(String.Format("Outputall 00;").Trim());
             for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
             {
                 outputs[cur_out].Image = orig_outputs[cur_out];

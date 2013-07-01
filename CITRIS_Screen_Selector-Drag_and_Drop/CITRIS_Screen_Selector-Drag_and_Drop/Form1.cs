@@ -119,6 +119,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             if (e.Button == MouseButtons.Left)
             {
                 Label cur_input = (Label)sender;
+                cur_input.BringToFront();
                 isDragged = true;
                 Point ptStartPosition = cur_input.PointToScreen(new Point(e.X, e.Y));
                 if (setHomePosition)

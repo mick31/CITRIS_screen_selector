@@ -36,7 +36,7 @@
             this.TV2_Border = new System.Windows.Forms.PictureBox();
             this.k = new System.Windows.Forms.PictureBox();
             this.pointingFinger = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.audience = new System.Windows.Forms.PictureBox();
             this.tv1_display = new System.Windows.Forms.Label();
             this.help = new System.Windows.Forms.Label();
             this.help_instructions = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@
             this.tv2_display = new System.Windows.Forms.Label();
             this.podium = new System.Windows.Forms.Label();
             this.podium_frame = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.podium_pic = new System.Windows.Forms.PictureBox();
             this.laptop = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.polycom_out = new System.Windows.Forms.Label();
@@ -57,9 +57,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.k)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.audience)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podium_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,15 +128,15 @@
             this.pointingFinger.TabStop = false;
             this.pointingFinger.Visible = false;
             // 
-            // pictureBox1
+            // audience
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 820);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1263, 165);
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.audience.BackColor = System.Drawing.Color.Transparent;
+            this.audience.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("audience.BackgroundImage")));
+            this.audience.Location = new System.Drawing.Point(0, 820);
+            this.audience.Name = "audience";
+            this.audience.Size = new System.Drawing.Size(1263, 165);
+            this.audience.TabIndex = 14;
+            this.audience.TabStop = false;
             // 
             // tv1_display
             // 
@@ -223,15 +223,15 @@
             this.podium_frame.TabIndex = 22;
             this.podium_frame.TabStop = false;
             // 
-            // pictureBox2
+            // podium_pic
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(1023, 531);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(240, 311);
-            this.pictureBox2.TabIndex = 23;
-            this.pictureBox2.TabStop = false;
+            this.podium_pic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("podium_pic.BackgroundImage")));
+            this.podium_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.podium_pic.Location = new System.Drawing.Point(1023, 531);
+            this.podium_pic.Name = "podium_pic";
+            this.podium_pic.Size = new System.Drawing.Size(240, 311);
+            this.podium_pic.TabIndex = 23;
+            this.podium_pic.TabStop = false;
             // 
             // laptop
             // 
@@ -329,9 +329,9 @@
             this.Controls.Add(this.polycom_out);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.audience);
             this.Controls.Add(this.alloff);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.podium_pic);
             this.Controls.Add(this.podium);
             this.Controls.Add(this.podium_frame);
             this.Controls.Add(this.tv2_display);
@@ -350,9 +350,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.k)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.audience)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podium_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -367,7 +367,7 @@
         private System.Windows.Forms.PictureBox TV2_Border;
         private System.Windows.Forms.PictureBox k;
         private System.Windows.Forms.PictureBox pointingFinger;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox audience;
         private System.Windows.Forms.Label tv1_display;
         private System.Windows.Forms.Label help;
         private System.Windows.Forms.TextBox help_instructions;
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Label tv2_display;
         private System.Windows.Forms.Label podium;
         private System.Windows.Forms.PictureBox podium_frame;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox podium_pic;
         private System.Windows.Forms.Label laptop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label polycom_out;

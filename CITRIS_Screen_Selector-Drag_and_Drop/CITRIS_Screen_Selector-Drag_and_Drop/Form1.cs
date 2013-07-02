@@ -157,7 +157,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                     LabelTag outTag = (LabelTag)outputs[cur_out].Tag;
                     LabelTag inTag = (LabelTag)cur_input.Tag;
                     // Send input switch command to SB
-                    SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
+                   // SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
 
                     // change outputs display
                     outputs[cur_out].Image = inTag.GetNormImage;
@@ -200,7 +200,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         {
             Label cur_output = (Label)sender;
             LabelTag cur_tag = (LabelTag)cur_output.Tag;
-            SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
+           // SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
             cur_output.Image = cur_tag.GetNormImage;
             cur_output.TextAlign = ContentAlignment.MiddleCenter;
             cur_output.Text = "No Input";
@@ -209,7 +209,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         // turn off all ShinyBow outputs
         private void offOutputs_Click(object sender, MouseEventArgs e)
         {
-            SendCommand(String.Format("Outputall 00;").Trim());
+           // SendCommand(String.Format("Outputall 00;").Trim());
             for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
             {
                 outputs[cur_out].Image = orig_outputs[cur_out];

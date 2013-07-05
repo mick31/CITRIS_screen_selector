@@ -18,6 +18,9 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         Point ptOffset;
         Point ptHome;
 
+        List<Label> label_obj;
+        List<PictureBox> picbox_obj;
+
         List<Label> outputs;
         List<Image> orig_outputs;
         public enum LabelType { INPUT, OUTPUT, OTHER }
@@ -50,7 +53,9 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         {
             InitializeComponent();
             InitializeConnection();
-            
+
+            label_obj = new List<Label>();
+            picbox_obj = new List<PictureBox>();
             outputs = new List<Label>();
             orig_outputs = new List<Image>();
 
@@ -61,6 +66,30 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             Image ploycom_highlight = Image.FromFile("ScreenSelector_PolyComm-Highlight.png");
             Image desktop1_highlight = Image.FromFile("ScreenSelector_Desktop1-Highlight.png");
             Image desktop2_highlight = Image.FromFile("ScreenSelector_Desktop2-Highlight.png");
+
+            label_obj.Add(TitleBar);
+            label_obj.Add(Sources);
+            label_obj.Add(Displays);
+            label_obj.Add(tv1_display);
+            label_obj.Add(help);
+            label_obj.Add(alloff);
+            label_obj.Add(tv2_display);
+            label_obj.Add(podium);
+            label_obj.Add(laptop);
+            label_obj.Add(Main_Help_Instructions);
+            label_obj.Add(polycom_out);
+            label_obj.Add(doccam);
+            label_obj.Add(desktop1);
+            label_obj.Add(polycom_in);
+            label_obj.Add(desktop2);
+
+            picbox_obj.Add(TV1_Border);
+            picbox_obj.Add(TV2_Border);
+            picbox_obj.Add(pointingFinger);
+            picbox_obj.Add(audience);
+            picbox_obj.Add(podium_frame);
+            picbox_obj.Add(podium_pic);
+            picbox_obj.Add(Poly_Comm_Frame);
 
             // initialize outputs
             InitializeLabel(tv1_display, LabelType.OUTPUT, 4, "No Output", output_highlight);
@@ -74,6 +103,14 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             InitializeLabel(polycom_in, LabelType.INPUT, 1, "", ploycom_highlight);
             InitializeLabel(desktop1, LabelType.INPUT, 1, "", desktop1_highlight);
             InitializeLabel(desktop2, LabelType.INPUT, 1, "", desktop2_highlight);
+
+            audience.BackColor = Color.Transparent;
+            audience.Parent = carpet;
+            audience.Location = new Point(0, 0);
+
+            alloff.BackColor = Color.Transparent;
+            alloff.Parent = podium_pic;
+            alloff.Location = new Point(30, 30);
         }
 
         // takes a label to tag, the type og tag, the index for the switcher matrix port, and the text to be displayed by default
@@ -143,6 +180,25 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                 Label cur_input = (Label)sender;
                 Point newPoint = cur_input.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(ptOffset);
+
+                //foreach (Label n in label_obj)
+                //{
+                //    if (cur_input.Bounds.IntersectsWith((Rectangle)n.ClientRectangle))
+                //    {
+                //        cur_input.BackColor = Color.Transparent;
+                //        cur_input.Parent = n;
+                //    }
+                //}
+
+                //foreach (PictureBox n in picbox_obj)
+                //{
+                //    if (cur_input.Bounds.IntersectsWith((Rectangle)n.ClientRectangle))
+                //    {
+                //        cur_input.BackColor = Color.Transparent;
+                //        cur_input.Parent = n;
+                //    }
+                //}
+
                 cur_input.Location = newPoint;
             }
         }
@@ -203,7 +259,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
            // SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
             cur_output.Image = cur_tag.GetNormImage;
             cur_output.TextAlign = ContentAlignment.MiddleCenter;
-            cur_output.Text = "No Input";
+            cur_output.Text = "No Source";
         }
 
         // turn off all ShinyBow outputs
@@ -214,7 +270,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             {
                 outputs[cur_out].Image = orig_outputs[cur_out];
                 outputs[cur_out].TextAlign = ContentAlignment.MiddleCenter;
-                outputs[cur_out].Text = "No Input";
+                outputs[cur_out].Text = "No Source";
             }
         }
 
@@ -289,6 +345,80 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                 help.BorderStyle = BorderStyle.None;
 
             help_instructions.Visible = can_see_help;
+        }
+    }
+
+    /************************************************************
+     * Transparency Functions
+     * **********************************************************/
+    public class TransparentControl : Control
+    {
+        private readonly Timer refresher;
+        private Image _image;
+
+        public TransparentControl()
+        {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            BackColor = Color.Transparent;
+            refresher = new Timer();
+            refresher.Tick += TimerOnTick;
+            refresher.Interval = 50;
+            refresher.Enabled = true;
+            refresher.Start();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x20;
+                return cp;
+            }
+        }
+
+        protected override void OnMove(EventArgs e)
+        {
+            RecreateHandle();
+        }
+
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_image != null)
+            {
+                e.Graphics.DrawImage(_image, (Width / 2) - (_image.Width / 2), (Height / 2) - (_image.Height / 2));
+            }
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            //Do not paint background
+        }
+
+        //Hack
+        public void Redraw()
+        {
+            RecreateHandle();
+        }
+
+        private void TimerOnTick(object source, EventArgs e)
+        {
+            RecreateHandle();
+            refresher.Stop();
+        }
+
+        public Image Image
+        {
+            get
+            {
+                return _image;
+            }
+            set
+            {
+                _image = value;
+                RecreateHandle();
+            }
         }
     }
 }

@@ -92,17 +92,17 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             picbox_obj.Add(Poly_Comm_Frame);
 
             // initialize outputs
-            InitializeLabel(tv1_display, LabelType.OUTPUT, 4, "No Output", output_highlight);
-            InitializeLabel(tv2_display, LabelType.OUTPUT, 5, "No Output", output_highlight);
-            InitializeLabel(podium, LabelType.OUTPUT, 6, "No Output", output_highlight);
-            InitializeLabel(polycom_out, LabelType.OUTPUT, 7, "No Output", output_highlight);
+            InitializeLabel(tv1_display, LabelType.OUTPUT, 1, "No Output", output_highlight);
+            InitializeLabel(tv2_display, LabelType.OUTPUT, 2, "No Output", output_highlight);
+            InitializeLabel(podium, LabelType.OUTPUT, 3, "No Output", output_highlight);
+            InitializeLabel(polycom_out, LabelType.OUTPUT, 4, "No Output", output_highlight);
 
             // initialize inputs
-            InitializeLabel(laptop, LabelType.INPUT, 1, "", laptop_highlight);
-            InitializeLabel(doccam, LabelType.INPUT, 1, "", doccam_highlight);
-            InitializeLabel(polycom_in, LabelType.INPUT, 1, "", ploycom_highlight);
-            InitializeLabel(desktop1, LabelType.INPUT, 1, "", desktop1_highlight);
-            InitializeLabel(desktop2, LabelType.INPUT, 1, "", desktop2_highlight);
+            InitializeLabel(laptop, LabelType.INPUT, 3, "", laptop_highlight);
+            InitializeLabel(desktop1, LabelType.INPUT, 4, "", desktop1_highlight);
+            InitializeLabel(desktop2, LabelType.INPUT, 5, "", desktop2_highlight);
+            InitializeLabel(polycom_in, LabelType.INPUT, 7, "", ploycom_highlight);
+            InitializeLabel(doccam, LabelType.INPUT, 8, "", doccam_highlight);
 
             audience.BackColor = Color.Transparent;
             audience.Parent = carpet;
@@ -189,24 +189,6 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                 Point newPoint = cur_input.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(ptOffset);
 
-                //foreach (Label n in label_obj)
-                //{
-                //    if (cur_input.Bounds.IntersectsWith((Rectangle)n.ClientRectangle))
-                //    {
-                //        cur_input.BackColor = Color.Transparent;
-                //        cur_input.Parent = n;
-                //    }
-                //}
-
-                //foreach (PictureBox n in picbox_obj)
-                //{
-                //    if (cur_input.Bounds.IntersectsWith((Rectangle)n.ClientRectangle))
-                //    {
-                //        cur_input.BackColor = Color.Transparent;
-                //        cur_input.Parent = n;
-                //    }
-                //}
-
                 cur_input.Location = newPoint;
             }
         }
@@ -216,12 +198,39 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             Label cur_input = (Label)sender;
             for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
             {
-                if (outputs[cur_out].Bounds.Contains(cur_input.Bounds))
+                if (outputs[cur_out].Bounds.IntersectsWith(cur_input.Bounds))
                 {
                     LabelTag outTag = (LabelTag)outputs[cur_out].Tag;
                     LabelTag inTag = (LabelTag)cur_input.Tag;
-                    // Send input switch command to SB
-                   // SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
+
+                    // laptop specific
+                    //if (outputs[cur_out] == laptop)
+                    //{
+                    //    if (!connected)
+                    //    {
+                    //        MessageBox.Show("No Switcher Detected! Please Contact CITRIS\n tech lab: (831)502-7399", "Error", MessageBoxButtons.OK);
+
+                    //        this.Close();
+
+                    //        return;
+                    //    }
+
+                    //    char[] buffer = new char[18];
+
+                    //    serialPort1.WriteTimeout = 500;
+                    //    serialPort1.DiscardOutBuffer();
+                    //    serialPort1.DiscardInBuffer();
+                    //    serialPort1.Write("ActiveSource ?;");
+
+                    //    serialPort1.Read(buffer, 0, 17);
+                    //    if (new String(buffer) == "ActiveSource 0001")
+                    //        SendCommand(String.Format("Output0{1} 02;", outTag.GetIndex).Trim());
+                    //    else
+                    //        SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
+                    //}
+                    //else
+                        // Send input switch command to SB
+                        SendCommand(String.Format("Output0{1} 0{0};", inTag.GetIndex, outTag.GetIndex).Trim());
 
                     // change outputs display
                     outputs[cur_out].Image = inTag.GetNormImage;
@@ -280,7 +289,9 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             if (cur_output == polycom_out && cur_output.Image == polycom_in.Image)
                 key.Visible = false;
 
-           // SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
+            // Send switch command to SB
+            SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
+
             cur_output.Image = cur_tag.GetNormImage;
             cur_output.TextAlign = ContentAlignment.MiddleCenter;
             cur_output.Text = "No Source";
@@ -289,7 +300,9 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         // turn off all ShinyBow outputs
         private void offOutputs_Click(object sender, MouseEventArgs e)
         {
-           // SendCommand(String.Format("Outputall 00;").Trim());
+            // Send input switch command to SB
+            SendCommand(String.Format("Outputall 00;").Trim());
+
             for (int cur_out = 0; cur_out < outputs.Count; cur_out++)
             {
                 outputs[cur_out].Image = orig_outputs[cur_out];
@@ -419,19 +432,6 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                 PictureBox cur_input = (PictureBox)sender;
                 Point newPoint = cur_input.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(ptOffset);
-
-                //if (cur_input.Bounds.IntersectsWith(cabinet1.Bounds))
-                //{
-                //    cur_input.BackColor = Color.Transparent;
-                //    cur_input.Parent = cabinet1;
-                //}
-
-
-                //if (cur_input.Bounds.IntersectsWith(cabinet2.Bounds))
-                //{
-                //    cur_input.BackColor = Color.Transparent;
-                //    cur_input.Parent = cabinet2;
-                //}
 
                 cur_input.Location = newPoint;
             }

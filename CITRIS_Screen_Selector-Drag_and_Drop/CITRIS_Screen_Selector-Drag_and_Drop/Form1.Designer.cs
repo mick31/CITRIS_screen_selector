@@ -144,11 +144,10 @@
             this.help.Cursor = System.Windows.Forms.Cursors.Default;
             this.help.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.help.Image = ((System.Drawing.Image)(resources.GetObject("help.Image")));
-            this.help.Location = new System.Drawing.Point(1162, 9);
+            this.help.Location = new System.Drawing.Point(1203, 2);
             this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(90, 119);
+            this.help.Size = new System.Drawing.Size(77, 77);
             this.help.TabIndex = 17;
-            this.help.Text = "Help";
             this.help.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.help.MouseClick += new System.Windows.Forms.MouseEventHandler(this.help_MouseClick);
             // 
@@ -261,12 +260,12 @@
             // 
             // help_instructions
             // 
-            this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
-            this.help_instructions.Location = new System.Drawing.Point(243, 51);
+            this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_instructions.Location = new System.Drawing.Point(315, 657);
             this.help_instructions.Multiline = true;
             this.help_instructions.Name = "help_instructions";
             this.help_instructions.ReadOnly = true;
-            this.help_instructions.Size = new System.Drawing.Size(774, 170);
+            this.help_instructions.Size = new System.Drawing.Size(642, 229);
             this.help_instructions.TabIndex = 18;
             this.help_instructions.Text = resources.GetString("help_instructions.Text");
             this.help_instructions.Visible = false;
@@ -502,6 +501,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.Controls.Add(this.help_instructions);
             this.Controls.Add(this.key);
             this.Controls.Add(this.nabil2);
             this.Controls.Add(this.ian2);
@@ -518,7 +518,6 @@
             this.Controls.Add(this.polycom_in);
             this.Controls.Add(this.doccam);
             this.Controls.Add(this.laptop);
-            this.Controls.Add(this.help_instructions);
             this.Controls.Add(this.polycom_out);
             this.Controls.Add(this.Poly_Comm_Frame);
             this.Controls.Add(this.Main_Help_Instructions);

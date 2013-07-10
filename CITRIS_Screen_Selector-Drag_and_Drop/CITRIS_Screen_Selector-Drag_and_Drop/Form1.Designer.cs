@@ -54,12 +54,19 @@
             this.podium_pic = new System.Windows.Forms.PictureBox();
             this.podium_frame = new System.Windows.Forms.PictureBox();
             this.Poly_Comm_Frame = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cabinet1 = new System.Windows.Forms.PictureBox();
+            this.carpet_meets_wall = new System.Windows.Forms.PictureBox();
+            this.cabinet2 = new System.Windows.Forms.PictureBox();
             this.carpet = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.key = new System.Windows.Forms.PictureBox();
+            this.mick1 = new System.Windows.Forms.PictureBox();
+            this.ian1 = new System.Windows.Forms.PictureBox();
+            this.nabil1 = new System.Windows.Forms.PictureBox();
+            this.nabil2 = new System.Windows.Forms.PictureBox();
+            this.ian2 = new System.Windows.Forms.PictureBox();
+            this.mick2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.TV1_Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TV2_Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pointingFinger)).BeginInit();
@@ -67,12 +74,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.podium_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Poly_Comm_Frame)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cabinet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carpet_meets_wall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cabinet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carpet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.key)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mick1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ian1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nabil1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nabil2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ian2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mick2)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleBar
@@ -142,6 +156,7 @@
             // 
             this.alloff.BackColor = System.Drawing.Color.Transparent;
             this.alloff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alloff.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.alloff.Image = ((System.Drawing.Image)(resources.GetObject("alloff.Image")));
             this.alloff.Location = new System.Drawing.Point(1066, 610);
             this.alloff.Name = "alloff";
@@ -199,11 +214,11 @@
             // polycom_out
             // 
             this.polycom_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.polycom_out.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.polycom_out.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.polycom_out.Image = ((System.Drawing.Image)(resources.GetObject("polycom_out.Image")));
-            this.polycom_out.Location = new System.Drawing.Point(1038, 232);
+            this.polycom_out.Location = new System.Drawing.Point(1035, 232);
             this.polycom_out.Name = "polycom_out";
-            this.polycom_out.Size = new System.Drawing.Size(205, 124);
+            this.polycom_out.Size = new System.Drawing.Size(208, 124);
             this.polycom_out.TabIndex = 26;
             this.polycom_out.Text = "No Source";
             this.polycom_out.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -331,34 +346,34 @@
             this.Poly_Comm_Frame.TabIndex = 31;
             this.Poly_Comm_Frame.TabStop = false;
             // 
-            // pictureBox1
+            // cabinet1
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(282, 629);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(324, 214);
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
+            this.cabinet1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cabinet1.BackgroundImage")));
+            this.cabinet1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cabinet1.Location = new System.Drawing.Point(299, 641);
+            this.cabinet1.Name = "cabinet1";
+            this.cabinet1.Size = new System.Drawing.Size(295, 197);
+            this.cabinet1.TabIndex = 32;
+            this.cabinet1.TabStop = false;
             // 
-            // pictureBox3
+            // carpet_meets_wall
             // 
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(0, 820);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1289, 42);
-            this.pictureBox3.TabIndex = 34;
-            this.pictureBox3.TabStop = false;
+            this.carpet_meets_wall.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("carpet_meets_wall.BackgroundImage")));
+            this.carpet_meets_wall.Location = new System.Drawing.Point(0, 820);
+            this.carpet_meets_wall.Name = "carpet_meets_wall";
+            this.carpet_meets_wall.Size = new System.Drawing.Size(1289, 42);
+            this.carpet_meets_wall.TabIndex = 34;
+            this.carpet_meets_wall.TabStop = false;
             // 
-            // pictureBox2
+            // cabinet2
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(667, 629);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(324, 214);
-            this.pictureBox2.TabIndex = 35;
-            this.pictureBox2.TabStop = false;
+            this.cabinet2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cabinet2.BackgroundImage")));
+            this.cabinet2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cabinet2.Location = new System.Drawing.Point(677, 641);
+            this.cabinet2.Name = "cabinet2";
+            this.cabinet2.Size = new System.Drawing.Size(295, 197);
+            this.cabinet2.TabIndex = 35;
+            this.cabinet2.TabStop = false;
             // 
             // carpet
             // 
@@ -392,6 +407,93 @@
             this.pictureBox5.TabIndex = 38;
             this.pictureBox5.TabStop = false;
             // 
+            // key
+            // 
+            this.key.BackColor = System.Drawing.Color.Transparent;
+            this.key.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("key.BackgroundImage")));
+            this.key.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.key.Location = new System.Drawing.Point(1258, 794);
+            this.key.Name = "key";
+            this.key.Size = new System.Drawing.Size(22, 27);
+            this.key.TabIndex = 39;
+            this.key.TabStop = false;
+            this.key.Visible = false;
+            this.key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.egg_MouseDown);
+            this.key.MouseMove += new System.Windows.Forms.MouseEventHandler(this.egg_MouseMove);
+            this.key.MouseUp += new System.Windows.Forms.MouseEventHandler(this.egg_MouseUp);
+            // 
+            // mick1
+            // 
+            this.mick1.BackColor = System.Drawing.Color.Transparent;
+            this.mick1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mick1.BackgroundImage")));
+            this.mick1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.mick1.Location = new System.Drawing.Point(299, 567);
+            this.mick1.Name = "mick1";
+            this.mick1.Size = new System.Drawing.Size(97, 84);
+            this.mick1.TabIndex = 40;
+            this.mick1.TabStop = false;
+            this.mick1.Visible = false;
+            // 
+            // ian1
+            // 
+            this.ian1.BackColor = System.Drawing.Color.Transparent;
+            this.ian1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ian1.BackgroundImage")));
+            this.ian1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ian1.Location = new System.Drawing.Point(395, 560);
+            this.ian1.Name = "ian1";
+            this.ian1.Size = new System.Drawing.Size(107, 89);
+            this.ian1.TabIndex = 41;
+            this.ian1.TabStop = false;
+            this.ian1.Visible = false;
+            // 
+            // nabil1
+            // 
+            this.nabil1.BackColor = System.Drawing.Color.Transparent;
+            this.nabil1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nabil1.BackgroundImage")));
+            this.nabil1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.nabil1.Location = new System.Drawing.Point(499, 574);
+            this.nabil1.Name = "nabil1";
+            this.nabil1.Size = new System.Drawing.Size(95, 75);
+            this.nabil1.TabIndex = 42;
+            this.nabil1.TabStop = false;
+            this.nabil1.Visible = false;
+            // 
+            // nabil2
+            // 
+            this.nabil2.BackColor = System.Drawing.Color.Transparent;
+            this.nabil2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nabil2.BackgroundImage")));
+            this.nabil2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.nabil2.Location = new System.Drawing.Point(875, 574);
+            this.nabil2.Name = "nabil2";
+            this.nabil2.Size = new System.Drawing.Size(97, 75);
+            this.nabil2.TabIndex = 45;
+            this.nabil2.TabStop = false;
+            this.nabil2.Visible = false;
+            // 
+            // ian2
+            // 
+            this.ian2.BackColor = System.Drawing.Color.Transparent;
+            this.ian2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ian2.BackgroundImage")));
+            this.ian2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ian2.Location = new System.Drawing.Point(771, 560);
+            this.ian2.Name = "ian2";
+            this.ian2.Size = new System.Drawing.Size(107, 89);
+            this.ian2.TabIndex = 44;
+            this.ian2.TabStop = false;
+            this.ian2.Visible = false;
+            // 
+            // mick2
+            // 
+            this.mick2.BackColor = System.Drawing.Color.Transparent;
+            this.mick2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mick2.BackgroundImage")));
+            this.mick2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.mick2.Location = new System.Drawing.Point(675, 567);
+            this.mick2.Name = "mick2";
+            this.mick2.Size = new System.Drawing.Size(97, 84);
+            this.mick2.TabIndex = 43;
+            this.mick2.TabStop = false;
+            this.mick2.Visible = false;
+            // 
             // ScreenSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,10 +502,17 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.Controls.Add(this.key);
+            this.Controls.Add(this.nabil2);
+            this.Controls.Add(this.ian2);
+            this.Controls.Add(this.mick2);
+            this.Controls.Add(this.nabil1);
+            this.Controls.Add(this.ian1);
+            this.Controls.Add(this.mick1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.cabinet2);
+            this.Controls.Add(this.cabinet1);
             this.Controls.Add(this.desktop2);
             this.Controls.Add(this.desktop1);
             this.Controls.Add(this.polycom_in);
@@ -427,7 +536,7 @@
             this.Controls.Add(this.TitleBar);
             this.Controls.Add(this.audience);
             this.Controls.Add(this.podium_pic);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.carpet_meets_wall);
             this.Controls.Add(this.carpet);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -441,12 +550,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.podium_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.podium_frame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Poly_Comm_Frame)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cabinet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carpet_meets_wall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cabinet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carpet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.key)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mick1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ian1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nabil1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nabil2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ian2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mick2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,12 +594,19 @@
         private System.Windows.Forms.Label polycom_in;
         private System.Windows.Forms.Label desktop2;
         private System.Windows.Forms.PictureBox Poly_Comm_Frame;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox cabinet1;
+        private System.Windows.Forms.PictureBox carpet_meets_wall;
+        private System.Windows.Forms.PictureBox cabinet2;
         private System.Windows.Forms.PictureBox carpet;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox key;
+        private System.Windows.Forms.PictureBox mick1;
+        private System.Windows.Forms.PictureBox ian1;
+        private System.Windows.Forms.PictureBox nabil1;
+        private System.Windows.Forms.PictureBox nabil2;
+        private System.Windows.Forms.PictureBox ian2;
+        private System.Windows.Forms.PictureBox mick2;
     }
 }
 

@@ -153,6 +153,14 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
          * **********************************************************/
         private void input_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            //easter egg
+            mick1.Visible = false;
+            ian1.Visible = false;
+            nabil1.Visible = false;
+            mick2.Visible = false;
+            ian2.Visible = false;
+            nabil2.Visible = false;
+
             if (e.Button == MouseButtons.Left)
             {
                 Label cur_input = (Label)sender;
@@ -219,6 +227,11 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                     outputs[cur_out].Image = inTag.GetNormImage;
                     outputs[cur_out].TextAlign = ContentAlignment.BottomCenter;
                     outputs[cur_out].Text = (String)inTag.GetDisplayText;
+
+                    // easter egg check
+                    if (cur_input == polycom_in && outputs[cur_out] == polycom_out)
+                        key.Visible = true;
+
                     break;
                 }
             }
@@ -256,6 +269,17 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         {
             Label cur_output = (Label)sender;
             LabelTag cur_tag = (LabelTag)cur_output.Tag;
+
+            //easter egg
+            mick1.Visible = false;
+            ian1.Visible = false;
+            nabil1.Visible = false;
+            mick2.Visible = false;
+            ian2.Visible = false;
+            nabil2.Visible = false;
+            if (cur_output == polycom_out && cur_output.Image == polycom_in.Image)
+                key.Visible = false;
+
            // SendCommand(String.Format("Output0{0} 00;", cur_tag.GetIndex).Trim());
             cur_output.Image = cur_tag.GetNormImage;
             cur_output.TextAlign = ContentAlignment.MiddleCenter;
@@ -272,6 +296,15 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
                 outputs[cur_out].TextAlign = ContentAlignment.MiddleCenter;
                 outputs[cur_out].Text = "No Source";
             }
+
+            //easter egg
+            mick1.Visible = false;
+            ian1.Visible = false;
+            nabil1.Visible = false;
+            mick2.Visible = false;
+            ian2.Visible = false;
+            nabil2.Visible = false;
+            key.Visible = false;
         }
 
 
@@ -340,85 +373,93 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         {
             can_see_help = !can_see_help;
             if (can_see_help)
+            {
                 help.BorderStyle = BorderStyle.Fixed3D;
+                help.BackColor = Color.LightGray;
+            }
             else
+            {
                 help.BorderStyle = BorderStyle.None;
+                help.BackColor = Color.Transparent;
+            }
 
             help_instructions.Visible = can_see_help;
         }
-    }
 
-    /************************************************************
-     * Transparency Functions
-     * **********************************************************/
-    public class TransparentControl : Control
-    {
-        private readonly Timer refresher;
-        private Image _image;
 
-        public TransparentControl()
+        /************************************************************
+         * Easter Egg Functions
+         * **********************************************************/
+        private void egg_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            BackColor = Color.Transparent;
-            refresher = new Timer();
-            refresher.Tick += TimerOnTick;
-            refresher.Interval = 50;
-            refresher.Enabled = true;
-            refresher.Start();
+            if (e.Button == MouseButtons.Left)
+            {
+                PictureBox cur_input = (PictureBox)sender;
+                cur_input.BringToFront();
+                isDragged = true;
+                Point ptStartPosition = cur_input.PointToScreen(new Point(e.X, e.Y));
+                if (setHomePosition)
+                {
+                    setHomePosition = false;
+                    ptHome = cur_input.Location;
+                }
+
+                ptOffset = new Point();
+                ptOffset.X = cur_input.Location.X - ptStartPosition.X;
+                ptOffset.Y = cur_input.Location.Y - ptStartPosition.Y;
+            }
+            else
+                isDragged = false;
         }
 
-        protected override CreateParams CreateParams
+        private void egg_MouseMove(object sender, MouseEventArgs e)
         {
-            get
+            if (isDragged)
             {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x20;
-                return cp;
+                PictureBox cur_input = (PictureBox)sender;
+                Point newPoint = cur_input.PointToScreen(new Point(e.X, e.Y));
+                newPoint.Offset(ptOffset);
+
+                //if (cur_input.Bounds.IntersectsWith(cabinet1.Bounds))
+                //{
+                //    cur_input.BackColor = Color.Transparent;
+                //    cur_input.Parent = cabinet1;
+                //}
+
+
+                //if (cur_input.Bounds.IntersectsWith(cabinet2.Bounds))
+                //{
+                //    cur_input.BackColor = Color.Transparent;
+                //    cur_input.Parent = cabinet2;
+                //}
+
+                cur_input.Location = newPoint;
             }
         }
 
-        protected override void OnMove(EventArgs e)
+        private void egg_MouseUp(object sender, MouseEventArgs e)
         {
-            RecreateHandle();
-        }
+            PictureBox cur_input = (PictureBox)sender;
 
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (_image != null)
+            if (cabinet1.Bounds.Contains(cur_input.Bounds))
             {
-                e.Graphics.DrawImage(_image, (Width / 2) - (_image.Width / 2), (Height / 2) - (_image.Height / 2));
+                // change display
+                mick1.Visible = true;
+                ian1.Visible = true;
+                nabil1.Visible = true;
             }
-        }
-
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            //Do not paint background
-        }
-
-        //Hack
-        public void Redraw()
-        {
-            RecreateHandle();
-        }
-
-        private void TimerOnTick(object source, EventArgs e)
-        {
-            RecreateHandle();
-            refresher.Stop();
-        }
-
-        public Image Image
-        {
-            get
+            else if (cabinet2.Bounds.Contains(cur_input.Bounds))
             {
-                return _image;
+                // change display
+                mick2.Visible = true;
+                ian2.Visible = true;
+                nabil2.Visible = true;
             }
-            set
-            {
-                _image = value;
-                RecreateHandle();
-            }
+
+            //reset button position
+            isDragged = false;
+            setHomePosition = true;
+            cur_input.Location = ptHome;
         }
     }
 }

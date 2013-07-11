@@ -163,6 +163,9 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
 
             if (e.Button == MouseButtons.Left)
             {
+                // recheck connection
+                InitializeConnection();
+
                 Label cur_input = (Label)sender;
                 cur_input.BringToFront();
                 isDragged = true;

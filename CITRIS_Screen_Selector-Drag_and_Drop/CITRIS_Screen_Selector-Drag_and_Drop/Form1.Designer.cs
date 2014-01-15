@@ -261,7 +261,7 @@
             // help_instructions
             // 
             this.help_instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_instructions.Location = new System.Drawing.Point(315, 657);
+            this.help_instructions.Location = new System.Drawing.Point(315, 794);
             this.help_instructions.Multiline = true;
             this.help_instructions.Name = "help_instructions";
             this.help_instructions.ReadOnly = true;

@@ -18,9 +18,6 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         Point ptOffset;
         Point ptHome;
 
-        List<Label> label_obj;
-        List<PictureBox> picbox_obj;
-
         List<Label> outputs;
         List<Image> orig_outputs;
         public enum LabelType { INPUT, OUTPUT, OTHER }
@@ -54,8 +51,6 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             InitializeComponent();
             InitializeConnection();
 
-            label_obj = new List<Label>();
-            picbox_obj = new List<PictureBox>();
             outputs = new List<Label>();
             orig_outputs = new List<Image>();
 
@@ -66,30 +61,6 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             Image ploycom_highlight = Image.FromFile("ScreenSelector_PolyComm-Highlight.png");
             Image desktop1_highlight = Image.FromFile("ScreenSelector_Desktop1-Highlight.png");
             Image desktop2_highlight = Image.FromFile("ScreenSelector_Desktop2-Highlight.png");
-
-            label_obj.Add(TitleBar);
-            label_obj.Add(Sources);
-            label_obj.Add(Displays);
-            label_obj.Add(tv1_display);
-            label_obj.Add(help);
-            label_obj.Add(alloff);
-            label_obj.Add(tv2_display);
-            label_obj.Add(podium);
-            label_obj.Add(laptop);
-            label_obj.Add(Main_Help_Instructions);
-            label_obj.Add(polycom_out);
-            label_obj.Add(doccam);
-            label_obj.Add(desktop1);
-            label_obj.Add(polycom_in);
-            label_obj.Add(desktop2);
-
-            picbox_obj.Add(TV1_Border);
-            picbox_obj.Add(TV2_Border);
-            picbox_obj.Add(pointingFinger);
-            picbox_obj.Add(audience);
-            picbox_obj.Add(podium_frame);
-            picbox_obj.Add(podium_pic);
-            picbox_obj.Add(Poly_Comm_Frame);
 
             // initialize outputs
             InitializeLabel(tv1_display, LabelType.OUTPUT, 1, "No Output", output_highlight);
@@ -366,7 +337,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
         // display a message if no ShinyBow is connected and exit
         private void SendCommand(string p)
         {
-            if (!connected)
+            /*if (!connected)
             {
                 MessageBox.Show("No Switcher Detected! Please Contact CITRIS\n tech lab: (831)502-7399", "Error", MessageBoxButtons.OK);
 
@@ -378,7 +349,7 @@ namespace CITRIS_Screen_Selector_Drag_and_Drop
             serialPort1.Open();
             serialPort1.WriteLine(p);
             serialPort1.DiscardOutBuffer();
-            serialPort1.Close();
+            serialPort1.Close();*/
         }
 
 
